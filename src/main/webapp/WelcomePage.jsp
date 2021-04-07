@@ -14,7 +14,5 @@
 
 </head>
 <body id="body1">
-
-$END$<
 </body>
 </html>
