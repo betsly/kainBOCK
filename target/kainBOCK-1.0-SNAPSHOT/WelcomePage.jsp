@@ -14,7 +14,10 @@
 
 </head>
 <body id="body1">
-
-$END$<
+    <form action="./Controller" method="post">
+        <input type="submit" name="test" value="test">
+        ${test}
+        ${test1}
+    </form>
 </body>
 </html>
