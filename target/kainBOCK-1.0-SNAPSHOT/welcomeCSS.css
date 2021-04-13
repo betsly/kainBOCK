@@ -1,6 +1,6 @@
-#body1{
-
-    background-color: #ffffff;
+html{
+    background-image: url("background.png");
+    background-color: #000000;
 
     background-size: 100%;
 }
