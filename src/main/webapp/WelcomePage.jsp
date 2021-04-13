@@ -9,10 +9,16 @@
 
 <html>
 <head>
-    <title>$Title$</title>
+    <title>KainBOCK</title>
     <link href="welcomeCSS.css" rel="stylesheet">
 
 </head>
 <body id="body1">
+<h1 id="ü1">Willkommen bei <strong>KainBOCK</strong></h1>
+<p id="info">Mit <strong>KainBOCK</strong> zur Traumfigur!</p>
+<p id="infoMehr">erfahre HIER mehr</p>
+<button class="button">LOGIN</button>
+<br>
+<button class="button">REGISTRIEREN</button>
 </body>
 </html>

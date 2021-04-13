@@ -1,9 +1,46 @@
-html {
-    background-image: url("background.png");
-    background-color: #000000;
-}
+
 
 #body1{
-    background-color: #ffffff;
+    background-image: url("background.png");
+    background-color: #000000;
     background-size: 100%;
+}
+
+.button{
+    float: end;
+    background-color: #AB2752 ;
+    color: black;
+    padding: 16px 50px;
+    text-align: center;
+    border: black;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+.button:hover {
+    background-color: #78163C;
+    color: black;
+}
+
+#ü1{
+    float: end;
+    color: #AB2752;
+    font-size: 70px;
+}
+#info{
+    float: end;
+    color: white;
+    text: bold;
+    font-size: 32px;
+
+
+}
+#infoMehr{
+    text-underline: white;
+    color: white;
+    font-size: 28px;
+    float: end;
 }
