@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -14,4 +16,5 @@ public class UserAccount {
     private String password;
     private int genderID;
     private String goal;
+    private LocalDate dateOfBirth;
 }
