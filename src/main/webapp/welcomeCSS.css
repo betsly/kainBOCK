@@ -7,7 +7,7 @@
 }
 
 .button{
-    float: end;
+
     background-color: #AB2752 ;
     color: black;
     padding: 16px 50px;
@@ -15,23 +15,32 @@
     border: black;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
+    font-size: 40px;
+    font-weight: bold;
+    margin: 10px 2px;
     transition-duration: 0.4s;
     cursor: pointer;
+    width: 500px;
+    border-radius: 16px;
+    font-family: Monda;
 }
 .button:hover {
     background-color: #78163C;
     color: black;
 }
+.divButton{
+    width: 100%;
+    text-align: right;
+}
 
 #ü1{
-    float: end;
+
     color: #AB2752;
     font-size: 70px;
+    font-family: Roboto;
 }
 #info{
-    float: end;
+
     color: white;
     text: bold;
     font-size: 32px;
@@ -39,8 +48,8 @@
 
 }
 #infoMehr{
-    text-underline: white;
+
     color: white;
     font-size: 28px;
-    float: end;
+
 }
