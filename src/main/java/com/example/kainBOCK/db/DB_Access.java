@@ -1,5 +1,9 @@
 package com.example.kainBOCK.db;
 
+import com.example.kainBOCK.bl.BMICalc;
+import com.example.kainBOCK.pojo.bmi;
+
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -16,6 +20,23 @@ public class DB_Access {
             theInstance = new DB_Access();
         }
         return theInstance;
+    }
+
+    private PreparedStatement insertBMIPrStat = null;
+    private final String insertBMIValues = "INSERT INTO bmi (date, user_id, weight, height, value) "
+            + "VALUES ( ? , ? , ?, ?);";
+
+    public boolean insertBMI(bmi BMI) throws SQLException  {
+        if (insertBMIPrStat == null) {
+            insertBMIPrStat = db.getConnection().prepareStatement(insertBMIValues);
+        }
+        insertBMIPrStat.setDate(1, BMI.getBirthdate());
+        insertBMIPrStat.setInt(2, BMI.getUser_id());
+        insertBMIPrStat.setDouble(3, BMI.getWeight());
+        insertBMIPrStat.setDouble(4, BMI.getHeight());
+        insertBMIPrStat.setDouble(5, BMI.getValue());
+        int numDataSets = insertBMIPrStat.executeUpdate();
+        return numDataSets > 0;
     }
 
     private DB_Access() throws SQLException {
