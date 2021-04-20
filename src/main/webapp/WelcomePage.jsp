@@ -22,6 +22,10 @@
 <button class="button" name="registeration">REGISTRIEREN</button>
 
 
+<input class="input100" type="text" name="username" placeholder="Benutzername" id="user_feld">
+<input class="input100" type="password" name="pass" placeholder="Passwort" id="passwort_feld">
+
+<button onclick="loginfunction()" class="login100-form-btn">Login</button>
 
 
 
