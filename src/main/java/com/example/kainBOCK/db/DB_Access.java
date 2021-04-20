@@ -4,10 +4,7 @@ import com.example.kainBOCK.bl.BMICalc;
 import com.example.kainBOCK.pojo.UserAccount;
 import com.example.kainBOCK.pojo.bmi;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +19,7 @@ public class DB_Access {
 
     private PreparedStatement insertUserPrStat = null;
     private final String insertUserString = "INSERT INTO user_account (username, password, email, gender_id, goal, date_of_birth) "
-            + "VALUES ( ? , ? , ?, ?, ?);";
+            + "VALUES ( ? , ? , ?, ?, ?, ?);";
 
     public static DB_Access getInstance() throws SQLException {
         if (theInstance == null) {
@@ -65,6 +62,7 @@ public class DB_Access {
         insertUserPrStat.setString(3, user.getEmail());
         insertUserPrStat.setInt(4, user.getGenderID());
         insertUserPrStat.setString(5, user.getGoal());
+        insertUserPrStat.setDate(6, Date.valueOf(user.getDateOfBirth()));
         int numDataSets = insertUserPrStat.executeUpdate();
         return numDataSets > 0;
     }
