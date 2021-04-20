@@ -39,6 +39,7 @@ public class Controller extends HttpServlet {
             }
             if (pwCompare != -1 && password.hashCode() == pwCompare) {
                 jwtUser = JWT.createJWT(email, email, "login-success", 1000000000);
+                request.setAttribute("user", jwtUser);
             }
         }
         else if(request.getParameter("registration") != null) {
