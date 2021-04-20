@@ -12,7 +12,7 @@ public class BMICalc {
     }
 
     public static void main(String[] args) {
-        System.out.println(String.format("The BMI is %.2f", getBMI(new bmi(null, 0, 'M', 187, 70))).replace(',', '.'));
+        //System.out.println(String.format("The BMI is %.2f", getBMI(new bmi(null, 0, 'M', 187, 70))).replace(',', '.'));
         /*
         private LocalDate birthdate;
     private double value;

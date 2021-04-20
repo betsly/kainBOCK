@@ -25,7 +25,7 @@ public class DB_Access {
         }
         return theInstance;
     }
-    
+
     private DB_Access() throws SQLException {
         try {
             db = new DB_Database();
