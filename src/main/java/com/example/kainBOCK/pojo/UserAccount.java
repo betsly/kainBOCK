@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,9 +16,9 @@ public class UserAccount {
     private String password;
     private int genderID;
     private String goal;
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
 
-    public UserAccount(String name, String email, String password, int genderID, String goal, Date dateOfBirth) {
+    public UserAccount(String name, String email, String password, int genderID, String goal, LocalDate dateOfBirth) {
         this.name = name;
         this.email = email;
         this.password = password;
