@@ -1,7 +1,9 @@
-function openForm() {
-    document.getElementById("myForm").style.display = "block";
-}
+function loginfunction(){
 
-function closeForm() {
-    document.getElementById("myForm").style.display = "none";
+    var userMail = document.getElementById('user_feld').value;
+    var userPass = document.getElementById('passwort_feld').value;
+
+
+    alert(userMail)
+    alert(userPass)
 }
