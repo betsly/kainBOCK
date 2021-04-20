@@ -21,7 +21,7 @@ public class DB_Access {
             + "VALUES ( ? , ? , ?, ?, ?);";
 
     private PreparedStatement insertUserPrStat = null;
-    private final String insertUserString = "INSERT INTO user_account (username, password, email, gender_id, goal) "
+    private final String insertUserString = "INSERT INTO user_account (username, password, email, gender_id, goal, date_of_birth) "
             + "VALUES ( ? , ? , ?, ?, ?);";
 
     public static DB_Access getInstance() throws SQLException {
