@@ -19,8 +19,14 @@
 <p id="infoMehr">erfahre HIER mehr</p>
 <button class="button" name="login">LOGIN </button>
 <br>
-<button class="button" name="registeration" onclick="window.open(this.href, 'Fenstername', 'width=800,height=600'); return false">REGISTRIEREN</button>
-<a href="www.example.com" onclick="window.open(this.href, 'Fenstername', 'width=800,height=600'); return false">Link</a>
+<button class="button" name="registeration">REGISTRIEREN</button>
+
+
+<input class="input100" type="text" name="username" placeholder="Benutzername" id="user_feld">
+<input class="input100" type="password" name="pass" placeholder="Passwort" id="passwort_feld">
+
+<button onclick="loginfunction()" class="login100-form-btn">Login</button>
+
 
 
 </body>
