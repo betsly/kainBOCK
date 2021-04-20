@@ -15,16 +15,26 @@ public class DB_Access {
     private static DB_Access theInstance = null;
     private DB_Database db;
 
+    private PreparedStatement insertBMIPrStat = null;
+    private final String insertBMIValues = "INSERT INTO bmi (date, user_id, weight, height, value) "
+            + "VALUES ( ? , ? , ?, ?, ?);";
+
     public static DB_Access getInstance() throws SQLException {
         if (theInstance == null) {
             theInstance = new DB_Access();
         }
         return theInstance;
     }
-
-    private PreparedStatement insertBMIPrStat = null;
-    private final String insertBMIValues = "INSERT INTO bmi (date, user_id, weight, height, value) "
-            + "VALUES ( ? , ? , ?, ?, ?);";
+    
+    private DB_Access() throws SQLException {
+        try {
+            db = new DB_Database();
+        } catch (ClassNotFoundException ex) {
+            throw new RuntimeException("Database problem - possible cause: DB-Driver not found");
+        } catch (SQLException ex) {
+            throw new RuntimeException("Database problem - possible cause: " + ex.toString());
+        }
+    }
 
     public boolean insertBMI(bmi BMI) throws SQLException  {
         if (insertBMIPrStat == null) {
@@ -37,15 +47,5 @@ public class DB_Access {
         insertBMIPrStat.setDouble(5, BMI.getValue());
         int numDataSets = insertBMIPrStat.executeUpdate();
         return numDataSets > 0;
-    }
-
-    private DB_Access() throws SQLException {
-        try {
-            db = new DB_Database();
-        } catch (ClassNotFoundException ex) {
-            throw new RuntimeException("Database problem - possible cause: DB-Driver not found");
-        } catch (SQLException ex) {
-            throw new RuntimeException("Database problem - possible cause: " + ex.toString());
-        }
     }
 }
