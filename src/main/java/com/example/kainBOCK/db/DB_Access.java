@@ -45,7 +45,7 @@ public class DB_Access {
         if (insertBMIPrStat == null) {
             insertBMIPrStat = db.getConnection().prepareStatement(insertBMIValues);
         }
-        
+
         insertBMIPrStat.setDate(1, BMI.getBirthdate());
         insertBMIPrStat.setInt(2, BMI.getUser_id());
         insertBMIPrStat.setDouble(3, BMI.getWeight());
@@ -67,6 +67,17 @@ public class DB_Access {
         insertUserPrStat.setString(5, user.getGoal());
         int numDataSets = insertUserPrStat.executeUpdate();
         return numDataSets > 0;
+    }
+
+    public int getPasswordByEmail(String email) throws SQLException {
+        String password = "";
+        String sql = "SELECT password FROM user_account WHERE email = \'" + email + "\';";
+        Statement prep = db.getStatement();
+        ResultSet rs = prep.executeQuery(sql);
+        while (rs.next()) {
+            password = rs.getString("password");
+        }
+        return password != "" ? Integer.parseInt(password) : -1;
     }
 
 }
