@@ -24,7 +24,7 @@ public class DB_Access {
 
     private PreparedStatement insertBMIPrStat = null;
     private final String insertBMIValues = "INSERT INTO bmi (date, user_id, weight, height, value) "
-            + "VALUES ( ? , ? , ?, ?);";
+            + "VALUES ( ? , ? , ?, ?, ?);";
 
     public boolean insertBMI(bmi BMI) throws SQLException  {
         if (insertBMIPrStat == null) {
