@@ -17,8 +17,13 @@
 <h1 id="ü1">Willkommen bei <strong>KainBOCK</strong></h1>
 <p id="info">Mit <strong>KainBOCK</strong> zur Traumfigur!</p>
 <p id="infoMehr">erfahre HIER mehr</p>
-<button class="button">LOGIN</button>
+<button class="button" name="login">LOGIN </button>
 <br>
-<button class="button">REGISTRIEREN</button>
+<button class="button" name="registeration">REGISTRIEREN</button>
+
+
+
+
+
 </body>
 </html>

@@ -1,6 +1,7 @@
 package com.example.kainBOCK.db;
 
 import com.example.kainBOCK.bl.BMICalc;
+import com.example.kainBOCK.pojo.UserAccount;
 import com.example.kainBOCK.pojo.bmi;
 
 import java.sql.PreparedStatement;
@@ -17,6 +18,10 @@ public class DB_Access {
 
     private PreparedStatement insertBMIPrStat = null;
     private final String insertBMIValues = "INSERT INTO bmi (date, user_id, weight, height, value) "
+            + "VALUES ( ? , ? , ?, ?, ?);";
+
+    private PreparedStatement insertUserPrStat = null;
+    private final String insertUserString = "INSERT INTO user_account (username, password, email, gender_id, goal) "
             + "VALUES ( ? , ? , ?, ?, ?);";
 
     public static DB_Access getInstance() throws SQLException {
@@ -40,6 +45,7 @@ public class DB_Access {
         if (insertBMIPrStat == null) {
             insertBMIPrStat = db.getConnection().prepareStatement(insertBMIValues);
         }
+        
         insertBMIPrStat.setDate(1, BMI.getBirthdate());
         insertBMIPrStat.setInt(2, BMI.getUser_id());
         insertBMIPrStat.setDouble(3, BMI.getWeight());
@@ -48,4 +54,19 @@ public class DB_Access {
         int numDataSets = insertBMIPrStat.executeUpdate();
         return numDataSets > 0;
     }
+
+    public boolean insertUser(UserAccount user) throws SQLException {
+        if (insertUserPrStat == null) {
+            insertUserPrStat = db.getConnection().prepareStatement(insertUserString);
+        }
+
+        insertUserPrStat.setString(1, user.getName());
+        insertUserPrStat.setInt(2, user.getPassword().hashCode());
+        insertUserPrStat.setString(3, user.getEmail());
+        insertUserPrStat.setInt(4, user.getGenderID());
+        insertUserPrStat.setString(5, user.getGoal());
+        int numDataSets = insertUserPrStat.executeUpdate();
+        return numDataSets > 0;
+    }
+
 }
