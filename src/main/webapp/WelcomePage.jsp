@@ -33,7 +33,7 @@
         <input type="password" placeholder="Enter Password" name="pswLogin" required>
 
         <button type="submit" class="btn">Login</button>
-        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        <button type="button" class="btn cancel" onclick="closeFormLogin()">Close</button>
     </form>
 </div>
 <div class="form-popup" id="registerForm">
@@ -65,11 +65,8 @@
             <option value="weightloss">Abnehmen</option>
             <option value="musclegain">Muskelaufbau</option>
         </select>
-
-
-
         <button type="submit" class="btn">Login</button>
-        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        <button type="button" class="btn cancel" onclick="closeFormRegister()">Close</button>
     </form>
 </div>
 

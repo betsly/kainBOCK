@@ -65,9 +65,6 @@
             <option value="weightloss">Abnehmen</option>
             <option value="musclegain">Muskelaufbau</option>
         </select>
-
-
-
         <button type="submit" class="btn">Login</button>
         <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
     </form>

@@ -5,6 +5,9 @@ function openFormRegister() {
     document.getElementById("registerForm").style.display = "block";
 }
 
-function closeForm() {
-    document.getElementById("myForm").style.display = "none";
+function closeFormLogin() {
+    document.getElementById("loginForm").style.display = "none";
+}
+function closeFormRegister() {
+    document.getElementById("registerForm").style.display = "none";
 }
