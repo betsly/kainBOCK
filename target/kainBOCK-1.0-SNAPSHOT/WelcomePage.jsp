@@ -30,7 +30,7 @@
         <input type="text" placeholder="Enter Email" name="emailLogin" required>
         <label><b>Password</b></label>
         <input type="password" placeholder="Enter Password" name="pswLogin" required>
-        <button type="submit" class="btn">Login</button>
+        <button type="submit" name="confirmLogin"class="btn">Login</button>
         <button type="button" class="btn cancel" onclick="closeFormLogin()">Close</button>
     </form>
 </div>
@@ -43,8 +43,6 @@
         <label>M</label>
         <input type="radio" id="female" name="gender" value="female">
         <label>W</label>
-        <input type="radio" id="other" name="gender" value="other">
-        <label>Other</label>
         </div>
         <br>
         <label><b>Name</b></label>
@@ -62,7 +60,7 @@
             <option value="weightloss">Abnehmen</option>
             <option value="musclegain">Muskelaufbau</option>
         </select>
-        <button type="submit" class="btn">Login</button>
+        <button type="submit" name="confirmRegistration" class="btn">Login</button>
         <button type="button" class="btn cancel" onclick="closeFormRegister()">Close</button>
     </form>
 </div>
