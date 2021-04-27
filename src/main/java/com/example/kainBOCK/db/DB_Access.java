@@ -1,6 +1,7 @@
 package com.example.kainBOCK.db;
 
 import com.example.kainBOCK.bl.BMICalc;
+import com.example.kainBOCK.pojo.Goal;
 import com.example.kainBOCK.pojo.UserAccount;
 import com.example.kainBOCK.pojo.bmi;
 
@@ -18,7 +19,7 @@ public class DB_Access {
             + "VALUES ( ? , ? , ?, ?, ?);";
 
     private PreparedStatement insertUserPrStat = null;
-    private final String insertUserString = "INSERT INTO user_account (username, password, email, gender_id, goal, date_of_birth) "
+    private final String insertUserString = "INSERT INTO user_account (name, password, email, gender_id, goal, date_of_birth) "
             + "VALUES ( ? , ? , ?, ?, ?, ?);";
 
     public static DB_Access getInstance() throws SQLException {
@@ -78,4 +79,16 @@ public class DB_Access {
         return password != "" ? Integer.parseInt(password) : -1;
     }
 
+    public List<Goal> getAllGoals() throws SQLException {
+        List goals = new ArrayList<>();
+        String sql = "SELECT * FROM goal;";
+        Statement prep = db.getStatement();
+        ResultSet rs = prep.executeQuery(sql);
+        while (rs.next()) {
+            int id = rs.getInt("goal_id");
+            String name = rs.getString("name");
+            goals.add(new Goal(id, name));
+        }
+        return goals;
+    }
 }

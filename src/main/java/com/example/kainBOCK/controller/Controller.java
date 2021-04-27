@@ -2,6 +2,7 @@ package com.example.kainBOCK.controller;
 
 import com.example.kainBOCK.bl.JWT;
 import com.example.kainBOCK.db.DB_Access;
+import com.example.kainBOCK.pojo.Goal;
 import com.example.kainBOCK.pojo.UserAccount;
 
 import javax.servlet.*;
@@ -11,16 +12,30 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet(name = "Controller", value = "/Controller")
 public class Controller extends HttpServlet {
 
     private static final DateTimeFormatter DTF = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+    private List<Goal> goals = new ArrayList<>();
     private String jwtUser = "";
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+        try {
+            goals.addAll(DB_Access.getInstance().getAllGoals());
+        } catch (SQLException throwables) {
+            System.out.println(throwables);
+        }
+        config.getServletContext().setAttribute("goals", goals);
+    }
 
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("WelcomePage.jsp").forward(request, response);
     }
 
     @Override
