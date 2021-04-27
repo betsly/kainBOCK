@@ -15,7 +15,7 @@ import java.time.format.DateTimeFormatter;
 @WebServlet(name = "Controller", value = "/Controller")
 public class Controller extends HttpServlet {
 
-    private static final DateTimeFormatter DTF = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    private static final DateTimeFormatter DTF = DateTimeFormatter.ofPattern("dd.MM.yyyy");
     private String jwtUser = "";
 
     @Override
