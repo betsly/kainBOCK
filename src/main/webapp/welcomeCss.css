@@ -7,10 +7,10 @@
 }
 
 .button{
-    float: end;
+
     background-color: #AB2752 ;
     color: black;
-    padding: 16px 50px;
+    padding: 30px 70px;
     text-align: center;
     border: black;
     text-decoration: none;
@@ -20,29 +20,30 @@
     transition-duration: 0.4s;
     cursor: pointer;
     border-radius: 15px;
-    position: relative;
-    left: 90%;
+
 }
 .button:hover {
     background-color: #78163C;
     color: black;
+
+
 }
-#alignü1{
+#position{
+    text-align: right;
+    position: relative;
+    position: relative;
+    right: 6%;
 
 }
 
 #ü1{
 
-    position: relative;
-    left:55%;
+
     color: #AB2752;
     font-size: 70px;
 
 }
 #info{
-
-    position: relative;
-    left: 80%;
     color: white;
     text: bold;
     font-size: 32px;
@@ -50,8 +51,7 @@
 
 }
 #infoMehr{
-    position: relative;
-    left: 85%;
+
     text-underline: white;
     color: white;
     font-size: 28px;
