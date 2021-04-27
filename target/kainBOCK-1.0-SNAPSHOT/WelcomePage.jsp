@@ -14,14 +14,15 @@
     <script src="kainBOCKJavaScript.js" type="text/javascript"></script>
 </head>
 <body id="body1">
-<div id="alignü1">
+<div id="position">
 <h1 id="ü1">Willkommen bei <strong>KainBOCK</strong> !</h1>
 <p id="info">Mit <strong>KainBOCK</strong> zur Traumfigur!</p>
 <p id="infoMehr">erfahre HIER mehr</p>
-</div>
+
 <button class="button" name="login" onclick="openFormLogin()">LOGIN </button>
 <br>
 <button class="button" name="registeration" onclick="openFormRegister()">REGISTRIEREN</button>
+</div>
 <div class="form-popup" id="loginForm">
     <form action="/Controller" class="form-container">
         <h1>Login</h1>
