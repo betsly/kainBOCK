@@ -24,7 +24,7 @@
 <button class="button" name="registeration" onclick="openFormRegister()">REGISTRIEREN</button>
 </div>
 <div class="form-popup" id="loginForm">
-    <form action="./Controller" class="form-container" method="post">
+    <form action="./Controller" class="form-container">
         <h1>Login</h1>
         <label><b>Email</b></label>
         <input type="text" placeholder="Enter Email" name="emailLogin" required>
@@ -35,7 +35,7 @@
     </form>
 </div>
 <div class="form-popup" id="registerForm">
-    <form action="./Controller" class="form-container" method="post">
+    <form action="./Controller" class="form-container">
         <h1>Registrieren</h1>
         <label><b>Geschlecht</b></label>
         <div id="gender">

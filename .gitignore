@@ -120,4 +120,11 @@ buildNumber.properties
 .flattened-pom.xml
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij,maven
+target/kainBOCK-1.0-SNAPSHOT/welcomeCSS.css
+target/kainBOCK-1.0-SNAPSHOT/WelcomePage.jsp
 target/kainBOCK-1.0-SNAPSHOT/META-INF/MANIFEST.MF
+src/main/webapp/welcomeCss.css
+src/main/webapp/WelcomePage.jsp
+target/kainBOCK-1.0-SNAPSHOT/META-INF/MANIFEST.MF
+target/kainBOCK-1.0-SNAPSHOT/welcomeCSS.css
+target/kainBOCK-1.0-SNAPSHOT/WelcomePage.jsp
