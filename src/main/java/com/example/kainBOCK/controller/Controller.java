@@ -52,5 +52,6 @@ public class Controller extends HttpServlet {
                 System.out.println(ex.toString());
             }
         }
+        request.getRequestDispatcher("WelcomePage.jsp").forward(request, response);
     }
 }
