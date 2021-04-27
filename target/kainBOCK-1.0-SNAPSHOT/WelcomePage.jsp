@@ -15,7 +15,7 @@
 </head>
 <body id="body1">
 <div id="position">
-<p id="ü1">Willkommen bei <b>KainBOCK</b> !</p>
+<p id="ü1">Willkommen bei <b>KainBOCK</b>!</p>
 <p id="info">Mit <b>KainBOCK</b> zur Traumfigur!</p>
 <p id="infoMehr">erfahre HIER mehr</p>
 

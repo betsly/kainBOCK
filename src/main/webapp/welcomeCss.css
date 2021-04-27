@@ -21,6 +21,8 @@
     cursor: pointer;
     border-radius: 15px;
     width: 400px;
+    position: relative;
+    top: 10%;
 
 }
 .button:hover {
@@ -33,9 +35,9 @@
 
     text-align: right;
     position: relative;
-    position: relative;
+
     right: 6%;
-    top: 7%;
+    top: 10%;
 
 }
 
@@ -47,6 +49,8 @@
 
 }
 #info{
+    position: relative;
+    top: 10%;
     color: white;
     text: bold;
     font-size: 32px;
@@ -55,6 +59,8 @@
 }
 #infoMehr{
 
+    position: relative;
+    top: 5%;
     text-underline: white;
     color: white;
     font-size: 28px;
@@ -68,12 +74,18 @@
 .form-popup {
     display: none;
     position: fixed;
-    bottom: 0;
-    right: 15px;
-    border: 3px solid #f1f1f1;
+    right:900px;
+    border: 3px solid black;
     z-index: 9;
-    background-color: black;
-    color: white;
+    background-color: #AB2752;
+    color: black;
+}
+#loginForm{
+    bottom: 35%;
+}
+#registerForm
+{
+    bottom: 15%;
 }
 
 /* Add styles to the form container */
@@ -90,7 +102,7 @@
     padding: 15px;
     margin: 5px 0 22px 0;
     border: none;
-    background: #f1f1f1;
+    background: lightgray;
     color: #AB2752;
 }
 
@@ -120,7 +132,7 @@
 
 /* Add a red background color to the cancel button */
 .form-container .cancel {
-    background-color: #AB2752;
+    background-color: black;
 }
 
 /* Add some hover effects to buttons */
