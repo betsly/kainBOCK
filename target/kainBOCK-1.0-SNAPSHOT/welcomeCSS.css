@@ -15,24 +15,34 @@
     border: black;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 30px;
     margin: 4px 2px;
     transition-duration: 0.4s;
     cursor: pointer;
+    border-radius: 15px;
+    position: relative;
+    left: 90%;
 }
 .button:hover {
     background-color: #78163C;
     color: black;
 }
+#alignü1{
+
+}
 
 #ü1{
-    margin-right: 20%;
+
+    position: relative;
+    left:55%;
     color: #AB2752;
     font-size: 70px;
 
 }
 #info{
-    float: end;
+
+    position: relative;
+    left: 80%;
     color: white;
     text: bold;
     font-size: 32px;
@@ -40,10 +50,12 @@
 
 }
 #infoMehr{
+    position: relative;
+    left: 85%;
     text-underline: white;
     color: white;
     font-size: 28px;
-    float: end;
+
 }
 
 /* Button used to open the contact form - fixed at the bottom of the page */
@@ -58,6 +70,7 @@
     border: 3px solid #f1f1f1;
     z-index: 9;
     background-color: black;
+    color: white;
 }
 
 /* Add styles to the form container */

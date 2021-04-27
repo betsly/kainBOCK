@@ -10,28 +10,25 @@
 <html>
 <head>
     <title>KainBOCK</title>
-    <link href="welcomeCSS.css" rel="stylesheet">
+    <link href="welcomeCss.css" rel="stylesheet">
     <script src="kainBOCKJavaScript.js" type="text/javascript"></script>
-
-
 </head>
 <body id="body1">
-<h1 id="ü1">Willkommen bei <strong>KainBOCK</strong></h1>
+<div id="alignü1">
+<h1 id="ü1">Willkommen bei <strong>KainBOCK</strong> !</h1>
 <p id="info">Mit <strong>KainBOCK</strong> zur Traumfigur!</p>
 <p id="infoMehr">erfahre HIER mehr</p>
+</div>
 <button class="button" name="login" onclick="openFormLogin()">LOGIN </button>
 <br>
 <button class="button" name="registeration" onclick="openFormRegister()">REGISTRIEREN</button>
 <div class="form-popup" id="loginForm">
     <form action="/Controller" class="form-container">
         <h1>Login</h1>
-
         <label><b>Email</b></label>
         <input type="text" placeholder="Enter Email" name="emailLogin" required>
-
         <label><b>Password</b></label>
         <input type="password" placeholder="Enter Password" name="pswLogin" required>
-
         <button type="submit" class="btn">Login</button>
         <button type="button" class="btn cancel" onclick="closeFormLogin()">Close</button>
     </form>
@@ -39,7 +36,6 @@
 <div class="form-popup" id="registerForm">
     <form action="/Controller" class="form-container">
         <h1>Registrieren</h1>
-
         <label><b>Geschlecht</b></label>
         <div id="gender">
         <input type="radio" id="male" name="gender" value="male">
@@ -69,9 +65,5 @@
         <button type="button" class="btn cancel" onclick="closeFormRegister()">Close</button>
     </form>
 </div>
-
-
-
-
 </body>
 </html>
