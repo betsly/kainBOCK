@@ -25,12 +25,9 @@ public class Controller extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if(request.getParameter("login") != null) {
-            request.getRequestDispatcher("Login").forward(request, response);
-        }
-        else if(request.getParameter("confirmLogin") != null){
-            String password = request.getParameter("password");
-            String email = request.getParameter("email");
+        if(request.getParameter("confirmLogin") != null) {
+            String password = request.getParameter("pswLogin");
+            String email = request.getParameter("emailLogin");
             int pwCompare = -1;
             try {
                 pwCompare = DB_Access.getInstance().getPasswordByEmail(email);
@@ -42,18 +39,15 @@ public class Controller extends HttpServlet {
                 request.setAttribute("user", jwtUser);
             }
         }
-        else if(request.getParameter("registration") != null) {
-            request.getRequestDispatcher("confirm").forward(request, response);
-        }
         else if(request.getParameter("confirmRegistration") != null){
-            String username = request.getParameter("username");
-            String password = request.getParameter("password");
+            String username = request.getParameter("name");
+            String password = request.getParameter("psw");
             String email = request.getParameter("email");
-            String dateOfBirth = request.getParameter("dateOfBirth");
-            String genderID = request.getParameter("genderID");
+            String dateOfBirth = request.getParameter("age");
+            int genderID = request.getParameter("gender") == "male" ? 1 : 2;
             String goal = request.getParameter("goal");
             try {
-                DB_Access.getInstance().insertUser(new UserAccount(username, email, password, Integer.parseInt(genderID),goal, LocalDate.parse(dateOfBirth, DTF)));
+                DB_Access.getInstance().insertUser(new UserAccount(username, email, password, genderID,goal, LocalDate.parse(dateOfBirth, DTF)));
             } catch (SQLException ex) {
                 System.out.println(ex.toString());
             }
