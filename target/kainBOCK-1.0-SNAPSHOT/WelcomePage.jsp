@@ -15,8 +15,8 @@
 </head>
 <body id="body1">
 <div id="position">
-<h1 id="ü1">Willkommen bei <strong>KainBOCK</strong> !</h1>
-<p id="info">Mit <strong>KainBOCK</strong> zur Traumfigur!</p>
+<p id="ü1">Willkommen bei <b>KainBOCK</b> !</p>
+<p id="info">Mit <b>KainBOCK</b> zur Traumfigur!</p>
 <p id="infoMehr">erfahre HIER mehr</p>
 
 <button class="button" name="login" onclick="openFormLogin()">LOGIN </button>
@@ -24,7 +24,7 @@
 <button class="button" name="registeration" onclick="openFormRegister()">REGISTRIEREN</button>
 </div>
 <div class="form-popup" id="loginForm">
-    <form action="./Controller" class="form-container">
+    <form action="./Controller" class="form-container" method="post">
         <h1>Login</h1>
         <label><b>Email</b></label>
         <input type="text" placeholder="Enter Email" name="emailLogin" required>
@@ -35,7 +35,7 @@
     </form>
 </div>
 <div class="form-popup" id="registerForm">
-    <form action="./Controller" class="form-container">
+    <form action="./Controller" class="form-container" method="post">
         <h1>Registrieren</h1>
         <label><b>Geschlecht</b></label>
         <div id="gender">

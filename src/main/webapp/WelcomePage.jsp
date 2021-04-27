@@ -15,8 +15,8 @@
 </head>
 <body id="body1">
 <div id="position">
-<h1 id="ü1">Willkommen bei <strong>KainBOCK</strong> !</h1>
-<p id="info">Mit <strong>KainBOCK</strong> zur Traumfigur!</p>
+<p id="ü1">Willkommen bei <b>KainBOCK</b> !</p>
+<p id="info">Mit <b>KainBOCK</b> zur Traumfigur!</p>
 <p id="infoMehr">erfahre HIER mehr</p>
 
 <button class="button" name="login" onclick="openFormLogin()">LOGIN </button>
