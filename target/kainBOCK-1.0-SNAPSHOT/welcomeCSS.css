@@ -20,6 +20,7 @@
     transition-duration: 0.4s;
     cursor: pointer;
     border-radius: 15px;
+    width: 400px;
 
 }
 .button:hover {
@@ -29,10 +30,12 @@
 
 }
 #position{
+
     text-align: right;
     position: relative;
     position: relative;
     right: 6%;
+    top: 5%;
 
 }
 
