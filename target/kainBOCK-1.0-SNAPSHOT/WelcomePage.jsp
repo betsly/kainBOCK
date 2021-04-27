@@ -30,7 +30,7 @@
         <input type="text" placeholder="Enter Email" name="emailLogin" required>
         <label><b>Password</b></label>
         <input type="password" placeholder="Enter Password" name="pswLogin" required>
-        <button type="submit" name="confirmLogin"class="btn">Login</button>
+        <button type="submit" name="confirmLogin" value="confirmLogin" class="btn">Login</button>
         <button type="button" class="btn cancel" onclick="closeFormLogin()">Close</button>
     </form>
 </div>
@@ -60,7 +60,7 @@
             <option value="weightloss">Abnehmen</option>
             <option value="musclegain">Muskelaufbau</option>
         </select>
-        <button type="submit" name="confirmRegistration" class="btn">Login</button>
+        <button type="submit" name="confirmRegistration" value="confirmRegistration" class="btn">Login</button>
         <button type="button" class="btn cancel" onclick="closeFormRegister()">Close</button>
     </form>
 </div>
