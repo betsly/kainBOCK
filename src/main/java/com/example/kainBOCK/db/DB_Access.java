@@ -19,7 +19,7 @@ public class DB_Access {
             + "VALUES ( ? , ? , ?, ?, ?);";
 
     private PreparedStatement insertUserPrStat = null;
-    private final String insertUserString = "INSERT INTO user_account (name, password, email, gender_id, goal, date_of_birth) "
+    private final String insertUserString = "INSERT INTO user_account (name, password, email, gender_id, goal_id, date_of_birth) "
             + "VALUES ( ? , ? , ?, ?, ?, ?);";
 
     public static DB_Access getInstance() throws SQLException {
@@ -62,7 +62,7 @@ public class DB_Access {
         insertUserPrStat.setInt(2, user.getPassword().hashCode());
         insertUserPrStat.setString(3, user.getEmail());
         insertUserPrStat.setInt(4, user.getGenderID());
-        insertUserPrStat.setString(5, user.getGoal());
+        insertUserPrStat.setInt(5, user.getGoalID());
         insertUserPrStat.setDate(6, Date.valueOf(user.getDateOfBirth()));
         int numDataSets = insertUserPrStat.executeUpdate();
         return numDataSets > 0;

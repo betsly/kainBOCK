@@ -15,15 +15,15 @@ public class UserAccount {
     private String email;
     private String password;
     private int genderID;
-    private String goal;
+    private int goalID;
     private LocalDate dateOfBirth;
 
-    public UserAccount(String name, String email, String password, int genderID, String goal, LocalDate dateOfBirth) {
+    public UserAccount(String name, String email, String password, int genderID, int goalID, LocalDate dateOfBirth) {
         this.name = name;
         this.email = email;
         this.password = password;
         this.genderID = genderID;
-        this.goal = goal;
+        this.goalID = goalID;
         this.dateOfBirth = dateOfBirth;
     }
 }

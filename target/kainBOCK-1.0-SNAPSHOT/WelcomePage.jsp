@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
 <head>
@@ -57,8 +58,9 @@
         <input type="password" placeholder="Enter Password" name="psw" required>
         <label><b>Ziel</b></label>
         <select name="goal" id="goals">
-            <option value="weightloss">Abnehmen</option>
-            <option value="musclegain">Muskelaufbau</option>
+            <c:forEach var="goal" items="${goals}">
+                <option value="${goal.goalID}">${goal.name}</option>
+            </c:forEach>
         </select>
         <button type="submit" name="confirmRegistration" value="confirmRegistration" class="btn">Login</button>
         <button type="button" class="btn cancel" onclick="closeFormRegister()">Close</button>

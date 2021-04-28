@@ -59,10 +59,10 @@ public class Controller extends HttpServlet {
             String password = request.getParameter("psw");
             String email = request.getParameter("email");
             String dateOfBirth = request.getParameter("age");
-            int genderID = request.getParameter("gender") == "male" ? 1 : 2;
-            String goal = request.getParameter("goal");
+            int genderID = request.getParameter("gender").equals("male") ? 1 : 2;
+            int goalID = Integer.parseInt(request.getParameter("goal"));
             try {
-                DB_Access.getInstance().insertUser(new UserAccount(username, email, password, genderID,goal, LocalDate.parse(dateOfBirth, DTF)));
+                DB_Access.getInstance().insertUser(new UserAccount(username, email, password, genderID,goalID, LocalDate.parse(dateOfBirth, DTF)));
             } catch (SQLException ex) {
                 System.out.println(ex.toString());
             }
