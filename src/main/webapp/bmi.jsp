@@ -9,10 +9,13 @@
 <html>
 <head>
     <title>Dein BMI</title>
+    <link href="bmi.css" rel="stylesheet">
 </head>
-<body>
+<body class="body">
+<form action="./Controller" method="post"></form>
 <div class="outerdiv">
     <p><b>BMI</b> berechnen</p>
+    
     <label><b>Geschlecht</b></label>
     <div id="gender">
     <input type="radio" id="male" name="gender" value="male">
