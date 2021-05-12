@@ -7,12 +7,14 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <title>KainBOCK-Homepage</title>
-    <link href="welcomeCss.css" rel="stylesheet">
-    <script src="kainBOCKJavaScript.js" type="text/javascript"></script>
-</head>
-<body>
-
-</body>
+    <head>
+        <title>KainBOCK-Homepage</title>
+        <link href="welcomeCss.css" rel="stylesheet">
+        <script src="kainBOCKJavaScript.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <form action="./Controller" method="post">
+            <button name="BMI" value="BMI">BMI</button>
+        </form>
+    </body>
 </html>

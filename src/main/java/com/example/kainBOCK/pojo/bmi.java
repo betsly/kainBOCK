@@ -10,12 +10,14 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class bmi {
-
-    private Date birthdate;
+    private Date date;
     private double value;
-    private char gender;
     private double height;
     private double weight;
     private int user_id;
 
+    public bmi(double height, double weight) {
+        this.height = height;
+        this.weight = weight;
+    }
 }
