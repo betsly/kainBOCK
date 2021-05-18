@@ -57,11 +57,13 @@
         <label><b></b></label>
         <input type="password" placeholder="Enter Password" name="psw" required>
         <label><b>Ziel</b></label>
+        <div class="select-wrapper">
         <select name="goal" id="goals">
             <c:forEach var="goal" items="${goals}">
                 <option value="${goal.goalID}">${goal.name}</option>
             </c:forEach>
         </select>
+        </div>
         <button type="submit" name="confirmRegistration" value="confirmRegistration" class="btn">Login</button>
         <button type="button" class="btn cancel" onclick="closeFormRegister()">Close</button>
     </form>
