@@ -106,7 +106,7 @@ public class Controller extends HttpServlet {
             String text = "Ihre Anmeldung bei KainBOCK wurde hiermit bestätigt";
             String smtpHost = "smtp.web.de";
 
-            new SendMail().sendMail(smtpHost, usernameMail, passwordMail, senderAddress, recipientsAddress, subject, text);
+            //new SendMail().sendMail(smtpHost, usernameMail, passwordMail, senderAddress, recipientsAddress, subject, text);
 
             request.getRequestDispatcher("WelcomePage.jsp").forward(request,response);
         }
