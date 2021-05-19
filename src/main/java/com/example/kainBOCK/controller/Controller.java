@@ -84,7 +84,7 @@ public class Controller extends HttpServlet {
                 } catch (SQLException throwables) {
                     System.out.println(throwables.toString());
                 }
-                request.setAttribute("user", jwtUser);
+                request.setAttribute("user", JWT.decodeJWT(jwtUser).getIssuer());
             }
             request.getRequestDispatcher("homepage.jsp").forward(request,response);
         }
