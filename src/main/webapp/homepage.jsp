@@ -9,12 +9,30 @@
 <html>
     <head>
         <title>KainBOCK-Homepage</title>
-        <link href="welcomeCss.css" rel="stylesheet">
+        <link href="homepage.css" rel="stylesheet">
         <script src="kainBOCKJavaScript.js" type="text/javascript"></script>
     </head>
     <body>
         <form action="./Controller" method="post">
-            <button name="BMI" value="BMI">BMI</button>
+            <p>Wilkommen zurück ${user}</p>
+            <button>☰</button>
+            <nav class="menu">
+                <ul>
+                    <li>
+                        <button onclick="alert('Hello there!')">
+                            Display Greeting
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="print()">
+                            Print This Page
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+
+            <p>${bmi}</p><button name="BMI" value="BMI">BMI</button>
+
 
         </form>
     </body>
