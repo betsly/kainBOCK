@@ -15,6 +15,7 @@
     <body>
         <form action="./Controller" method="post">
             <button name="BMI" value="BMI">BMI</button>
+
         </form>
     </body>
 </html>

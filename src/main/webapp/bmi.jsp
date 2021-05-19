@@ -15,7 +15,6 @@
 <form action="./Controller" method="post"></form>
 <div class="outerdiv">
     <p><b>BMI</b> berechnen</p>
-    <form action="./Controller" method="post">
         <label><b>Geschlecht</b></label>
         <div id="gender">
             <input type="radio" id="male" name="gender" value="male">
@@ -31,7 +30,7 @@
         <input type="text" placeholder="62 kg" name="weight" required>
         <button type="submit" name="calcBMI" value="confirmBMI" class="btn">Berechnen</button>
         <button type="submit" name="exitBMI">Close</button>
-    </form>
+
 </div>
 </body>
 </html>
