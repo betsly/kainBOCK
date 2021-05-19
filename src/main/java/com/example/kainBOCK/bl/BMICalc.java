@@ -6,12 +6,13 @@ public class BMICalc {
 
     /**
      *
-     * @param BMI
+     * @param height
+     * @param weight
      * @return
      */
-    public static double getBMI(bmi BMI) {
+    public static double getBMI(int height, double weight) {
         double value = 0;
-        value = BMI.getWeight()/(Math.pow(BMI.getHeight()/100, 2));
+        value = weight/(Math.pow(height/100, 2));
         return value;
     }
 }

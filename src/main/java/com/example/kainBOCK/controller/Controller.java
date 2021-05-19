@@ -1,10 +1,12 @@
 package com.example.kainBOCK.controller;
 
+import com.example.kainBOCK.bl.BMICalc;
 import com.example.kainBOCK.bl.JWT;
 import com.example.kainBOCK.bl.SendMail;
 import com.example.kainBOCK.db.DB_Access;
 import com.example.kainBOCK.pojo.Goal;
 import com.example.kainBOCK.pojo.UserAccount;
+import com.example.kainBOCK.pojo.bmi;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -77,7 +79,11 @@ public class Controller extends HttpServlet {
             // compare password of DB with the input
             if (pwCompare != -1 && password.hashCode() == pwCompare) {
                 // create JWT for current user
-                jwtUser = JWT.createJWT(email, email, "login-success", 1000000000);
+                try {
+                    jwtUser = JWT.createJWT(DB_Access.getInstance().getUserIDByEmail(email), email, "login-success", 1000000000);
+                } catch (SQLException throwables) {
+                    System.out.println(throwables.toString());
+                }
                 request.setAttribute("user", jwtUser);
             }
             request.getRequestDispatcher("homepage.jsp").forward(request,response);
@@ -108,7 +114,7 @@ public class Controller extends HttpServlet {
 
             //new SendMail().sendMail(smtpHost, usernameMail, passwordMail, senderAddress, recipientsAddress, subject, text);
 
-            request.getRequestDispatcher("WelcomePage.jsp").forward(request,response);
+            request.getRequestDispatcher("homepage.jsp").forward(request,response);
         }
         /**
          * forward to BMI page
@@ -120,7 +126,15 @@ public class Controller extends HttpServlet {
          * Calculate BMI and save values to DB
          */
         else if (request.getParameter("calcBMI") != null){
-
+            double weight = Double.parseDouble(request.getParameter("weight"));
+            int height = Integer.parseInt(request.getParameter("height"));
+            double value = BMICalc.getBMI(height, weight);
+            try {
+                DB_Access.getInstance().insertBMI(new bmi(LocalDate.now(), value, height, weight,
+                        Integer.parseInt(JWT.decodeJWT(jwtUser).getId())));
+            } catch (SQLException throwables) {
+                System.out.println(throwables.toString());
+            }
         }
     }
 }

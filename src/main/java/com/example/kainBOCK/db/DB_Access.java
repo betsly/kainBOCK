@@ -24,6 +24,7 @@ public class DB_Access {
 
     /**
      * Returns the current Instance
+     *
      * @return
      * @throws SQLException
      */
@@ -36,6 +37,7 @@ public class DB_Access {
 
     /**
      * Singelton for DB Connection
+     *
      * @throws SQLException
      */
     private DB_Access() throws SQLException {
@@ -50,19 +52,20 @@ public class DB_Access {
 
     /**
      * Saves the BMI values in the DB
+     *
      * @param BMI
      * @return
      * @throws SQLException
      */
-    public boolean insertBMI(bmi BMI) throws SQLException  {
+    public boolean insertBMI(bmi BMI) throws SQLException {
         if (insertBMIPrStat == null) {
             insertBMIPrStat = db.getConnection().prepareStatement(insertBMIValues);
         }
 
-        insertBMIPrStat.setDate(1, BMI.getDate());
+        insertBMIPrStat.setDate(1, Date.valueOf(BMI.getDate()));
         insertBMIPrStat.setInt(2, BMI.getUser_id());
         insertBMIPrStat.setDouble(3, BMI.getWeight());
-        insertBMIPrStat.setDouble(4, BMI.getHeight());
+        insertBMIPrStat.setInt(4, BMI.getHeight());
         insertBMIPrStat.setDouble(5, BMI.getValue());
         int numDataSets = insertBMIPrStat.executeUpdate();
         return numDataSets > 0;
@@ -70,6 +73,7 @@ public class DB_Access {
 
     /**
      * Registration of new user
+     *
      * @param user
      * @return
      * @throws SQLException
@@ -91,6 +95,7 @@ public class DB_Access {
 
     /**
      * Gets the password to check if input password for login is correct
+     *
      * @param email
      * @return
      * @throws SQLException
@@ -108,6 +113,7 @@ public class DB_Access {
 
     /**
      * Gets all goals from DB
+     *
      * @return
      * @throws SQLException
      */
@@ -122,5 +128,17 @@ public class DB_Access {
             goals.add(new Goal(id, name));
         }
         return goals;
+    }
+
+    public int getUserIDByEmail(String email) throws SQLException {
+        int userID = 0;
+        String sql = "SELECT user_id FROM user_account WHERE email = \'" + email + "\';";
+        Statement prep = db.getStatement();
+        ResultSet rs = prep.executeQuery(sql);
+        while (rs.next()) {
+            userID = rs.getInt("user_id");
+        }
+        return userID;
+
     }
 }
