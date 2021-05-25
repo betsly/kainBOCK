@@ -12,26 +12,25 @@
         <link href="homepage.css" rel="stylesheet">
         <script src="kainBOCKJavaScript.js" type="text/javascript"></script>
     </head>
-    <body>
+    <body style=" background-color: #000000">
         <form action="./Controller" method="post">
-            <p>Wilkommen zurück ${user}</p>
-            <button>☰</button>
-            <nav class="menu">
-                <ul>
-                    <li>
-                        <button onclick="alert('Hello there!')">
-                            Display Greeting
-                        </button>
-                    </li>
-                    <li>
-                        <button onclick="print()">
-                            Print This Page
-                        </button>
-                    </li>
-                </ul>
-            </nav>
 
-            <p>${bmi}</p><button name="BMI" value="BMI">BMI</button>
+            <div class="sign">
+                <span class="fast-flicker">K</span>ain<span class="flicker">BO</span>CK
+            </div>
+
+
+
+
+
+
+            <div class="btDiv">
+                <div class="buttons"><input class="bt" type="submit" name="bmiButton" value="BMI berechnen"></div>
+                <div class="buttons"><input class="bt" type="submit" name="videoButton" value="Trainings-Videos"></div>
+                <div class="buttons"><input class="bt" type="submit" name="changeProfile" value="Profil ändern"></div>
+                <div class="buttons"><input class="bt" type="submit" name="logout" value="Logout"></div>
+            </div>
+
 
 
         </form>
