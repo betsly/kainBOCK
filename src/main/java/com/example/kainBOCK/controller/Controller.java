@@ -115,7 +115,7 @@ public class Controller extends HttpServlet {
 
             new SendMail().sendMail(smtpHost, usernameMail, passwordMail, senderAddress, recipientsAddress, subject, text);
 
-            request.getRequestDispatcher("homepage.jsp").forward(request,response);
+            request.getRequestDispatcher("WelcomePage.jsp").forward(request,response);
         }
         /**
          * forward to BMI page
