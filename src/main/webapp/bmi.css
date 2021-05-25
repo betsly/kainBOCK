@@ -1,17 +1,73 @@
+* {
+    box-sizing: border-box;
+}
+
 .body{
+    background-image: url("background.png");
     background-color: #000000;
-    background-size: 100%;
+
 }
 
 #ueberschriftBMI {
     color: #AB2752;
+    font-size: 40px;
+    font-weight: bold;
+    padding-left: 65%;
+    padding-top: 5%;
 }
 
 .outerdiv {
-    text-align: center;
+    text-align: left;
     color: #AB2752;
+    padding-top: 3%;
+    padding-left: 60%;
+    text: bold;
+    font-size: 32px;
+    padding-bottom: 2%;
 }
 
-.radioButtons {
+.btn {
+    background-color: #AB2752 ;
+    color: black;
+    padding: 20px 90px;
+    text-align: center;
+    border: black;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+    margin: 10px 10px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 15px;
+    width: 400px;
+    margin-left: 62%;
+}
 
+.btn:hover {
+    background-color: #78163C;
+    color: black;
+}
+
+input[type=text] {
+    background-color: #000000;
+    border: none;
+    border-bottom: 2px solid white;
+    color: white;
+    font-size: 26px;
+
+}
+
+input[type=text]:focus {
+    outline: none;
+}
+
+#kg {
+    margin-left: 15px;
+}
+
+#motiv {
+    color: white;
+    font-size: 60px;
+    margin-top: 7%;
+    margin-left: 61%;
 }

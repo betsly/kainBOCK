@@ -13,16 +13,18 @@
 </head>
 <body class="body">
 <form action="./Controller" method="POST">
-<div class="outerdiv">
     <p id="ueberschriftBMI"><b>BMI</b> berechnen</p>
+<div class="outerdiv">
         <a><b>Größe in cm</b></a>
-    <input type="text" placeholder="172" name="height" required></br>
+    <input type="text" placeholder="172" name="height" id="kg" required></br>
         <a><b>Gewicht in kg</b></a>
-    <input type="text" placeholder="62 kg" name="weight" required></br>
-        <button type="submit" name="calcBMI" value="confirmBMI" class="btn">Berechnen</button>
-        <button type="submit" name="exitBMI">Close</button>
+    <input type="text" placeholder="62" name="weight" required></br>
+    </div>
+    <button type="submit" name="calcBMI" value="confirmBMI" class="btn">BERECHNEN</button></br>
+    <button type="submit" name="exitBMI" value="exitBMI" class="btn">BACK</button>
+    <p id="motiv">NOW or NEVER!</p>
 
-</div>
+
 </form>
 </body>
 </html>
