@@ -71,7 +71,7 @@ public class Controller extends HttpServlet {
             String email = request.getParameter("emailLogin");
             int pwCompare = -1;
             try {
-                // get password for input mail address
+                // get password for input mail addresss
                 pwCompare = DB_Access.getInstance().getPasswordByEmail(email);
             } catch (SQLException ex) {
                 System.out.println(ex.toString());
