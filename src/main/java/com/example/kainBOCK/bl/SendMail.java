@@ -35,7 +35,7 @@ public class SendMail {
         // muss an dieser Stelle die Property auf "true" gesetzt
         // werden
         properties.put("mail.smtp.auth", "true");
-
+        properties.put("mail.smtp.starttls.enable", "true");
         // Hier wird mit den Properties und dem implements Contructor
         // erzeugten
         // MailAuthenticator eine Session erzeugt
@@ -47,22 +47,19 @@ public class SendMail {
 
             // Hier werden die Absender- und Empfängeradressen gesetzt
             msg.setFrom(new InternetAddress(senderAddress));
-            msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(
-                    recipientsAddress, false));
+            msg.addRecipient(Message.RecipientType.TO, new InternetAddress(recipientsAddress));
 
             // Der Betreff und Body der Message werden gesetzt
             msg.setSubject(subject);
             msg.setText(text);
 
             // Hier lassen sich HEADER-Informationen hinzufügen
-            msg.setHeader("Test", "Test");
             msg.setSentDate(new Date());
-
             // Zum Schluss wird die Mail natürlich noch verschickt
             Transport.send(msg);
 
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.toString());
         }
     }
 }

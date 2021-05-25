@@ -81,6 +81,7 @@ public class Controller extends HttpServlet {
                 // create JWT for current user
                 try {
                     jwtUser = JWT.createJWT(DB_Access.getInstance().getUserIDByEmail(email), email, "login-success", 1000000000);
+                    request.setAttribute("username", JWT.decodeJWT(jwtUser).getIssuer());
                 } catch (SQLException throwables) {
                     System.out.println(throwables.toString());
                 }
@@ -104,17 +105,17 @@ public class Controller extends HttpServlet {
                 System.out.println(ex.toString());
             }
             // send Confirmationmail
-            String usernameMail = "";
-            String passwordMail = "";
-            String senderAddress ="";//someone@web.de
-            String recipientsAddress = ""; //somereceiver@web.de
+            String usernameMail = "kainbock.pos@gmail.com";
+            String passwordMail = "kainbock.pos123";
+            String senderAddress ="kainbock.pos@gmail.com";//someone@web.de
+            String recipientsAddress = email; //somereceiver@web.de
             String subject = "Bestätigung der Anmeldung";
-            String text = "Ihre Anmeldung bei KainBOCK wurde hiermit bestätigt";
-            String smtpHost = "smtp.web.de";
+            String text = "Ihre Anmeldung bei KainBOCK wurde hiermit bestätigt.";
+            String smtpHost = "smtp.gmail.com";
 
-            //new SendMail().sendMail(smtpHost, usernameMail, passwordMail, senderAddress, recipientsAddress, subject, text);
+            new SendMail().sendMail(smtpHost, usernameMail, passwordMail, senderAddress, recipientsAddress, subject, text);
 
-            request.getRequestDispatcher("homepage.jsp").forward(request,response);
+            request.getRequestDispatcher("WelcomePage.jsp").forward(request,response);
         }
         /**
          * forward to BMI page
