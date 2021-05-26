@@ -44,7 +44,7 @@ public class DB_Access {
         try {
             db = new DB_Database();
         } catch (ClassNotFoundException ex) {
-            throw new RuntimeException("Database problem - possible cause: DB-Driver not found");
+            throw new RuntimeException("Database problem - possible cause: "+ex.toString());
         } catch (SQLException ex) {
             throw new RuntimeException("Database problem - possible cause: " + ex.toString());
         }
