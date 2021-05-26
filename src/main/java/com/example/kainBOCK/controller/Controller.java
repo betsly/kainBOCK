@@ -34,7 +34,7 @@ public class Controller extends HttpServlet {
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
         try {
-            // Ziele aus Datenbank laden
+            // load Goals from DB
             goals.addAll(DB_Access.getInstance().getAllGoals());
         } catch (SQLException throwables) {
             System.out.println(throwables);
@@ -81,11 +81,9 @@ public class Controller extends HttpServlet {
                 // create JWT for current user
                 try {
                     jwtUser = JWT.createJWT(DB_Access.getInstance().getUserIDByEmail(email), email, "login-success", 1000000000);
-                    request.setAttribute("username", JWT.decodeJWT(jwtUser).getIssuer());
                 } catch (SQLException throwables) {
                     System.out.println(throwables.toString());
                 }
-                request.setAttribute("user", JWT.decodeJWT(jwtUser).getIssuer());
             }
             request.getRequestDispatcher("homepage.jsp").forward(request,response);
         }
@@ -100,7 +98,11 @@ public class Controller extends HttpServlet {
             int genderID = request.getParameter("gender").equals("male") ? 1 : 2;
             int goalID = Integer.parseInt(request.getParameter("goal"));
             try {
+                //insert User into DB
                 DB_Access.getInstance().insertUser(new UserAccount(username, email, password, genderID, goalID, LocalDate.parse(dateOfBirth, DTF)));
+                //login the user after registration
+                jwtUser = JWT.createJWT(DB_Access.getInstance().getUserIDByEmail(email), email, "login-success", 1000000000);
+                request.setAttribute("username", username);
             } catch (SQLException ex) {
                 System.out.println(ex.toString());
             }
@@ -111,16 +113,17 @@ public class Controller extends HttpServlet {
             String recipientsAddress = email; //somereceiver@web.de
             String subject = "Bestätigung der Anmeldung";
             String text = "Ihre Anmeldung bei KainBOCK wurde hiermit bestätigt.";
+            // we are using gmail for SNMP
             String smtpHost = "smtp.gmail.com";
 
             new SendMail().sendMail(smtpHost, usernameMail, passwordMail, senderAddress, recipientsAddress, subject, text);
 
-            request.getRequestDispatcher("WelcomePage.jsp").forward(request,response);
+            request.getRequestDispatcher("homepage.jsp").forward(request,response);
         }
         /**
          * forward to BMI page
          */
-        else if(request.getParameter("BMI") != null) {
+        else if(request.getParameter("bmiButton") != null) {
             request.getRequestDispatcher("bmi.jsp").forward(request, response);
         }
         /**

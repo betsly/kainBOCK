@@ -130,6 +130,13 @@ public class DB_Access {
         return goals;
     }
 
+    /**
+     *
+     *
+     * @param email
+     * @return
+     * @throws SQLException
+     */
     public int getUserIDByEmail(String email) throws SQLException {
         int userID = 0;
         String sql = "SELECT user_id FROM user_account WHERE email = \'" + email + "\';";
