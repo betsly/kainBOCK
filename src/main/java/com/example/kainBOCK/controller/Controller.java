@@ -120,7 +120,7 @@ public class Controller extends HttpServlet {
         /**
          * forward to BMI page
          */
-        else if(request.getParameter("BMI") != null) {
+        else if(request.getParameter("bmiButton") != null) {
             request.getRequestDispatcher("bmi.jsp").forward(request, response);
         }
         /**
