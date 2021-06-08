@@ -6,6 +6,8 @@ import com.example.kainBOCK.pojo.UserAccount;
 import com.example.kainBOCK.pojo.bmi;
 
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -146,6 +148,16 @@ public class DB_Access {
             userID = rs.getInt("user_id");
         }
         return userID;
+    }
 
+    public int getAgeOfUser(String email) throws SQLException {
+        LocalDate birthdate = null;
+        String sql = "SELECT date_of_birth FROM user_account WHERE email = \'" + email + "\';";
+        Statement prep = db.getStatement();
+        ResultSet rs = prep.executeQuery(sql);
+        while (rs.next()) {
+            birthdate = rs.getDate("date_of_birth").toLocalDate();
+        }
+        return birthdate == null ? -1 : Period.between(birthdate, LocalDate.now()).getYears();
     }
 }

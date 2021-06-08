@@ -81,6 +81,7 @@ public class Controller extends HttpServlet {
                 // create JWT for current user
                 try {
                     jwtUser = JWT.createJWT(DB_Access.getInstance().getUserIDByEmail(email), email, "login-success", 1000000000);
+                    request.getSession().setAttribute("ageOfUser", DB_Access.getInstance().getAgeOfUser(email));
                 } catch (SQLException throwables) {
                     System.out.println(throwables.toString());
                 }
