@@ -64,7 +64,7 @@
             </c:forEach>
         </select>
         </div>
-        <button type="submit" name="confirmRegistration" value="confirmRegistration" class="btn">Login</button>
+        <button type="submit" name="confirmRegistration" value="confirmRegistration" class="btn">Registrieren</button>
         <button type="button" class="btn cancel" onclick="closeFormRegister()">Close</button>
     </form>
 </div>
