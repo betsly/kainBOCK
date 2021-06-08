@@ -83,10 +83,12 @@ public class Controller extends HttpServlet {
                     jwtUser = JWT.createJWT(DB_Access.getInstance().getUserIDByEmail(email), email, "login-success", 1000000000);
                     request.getSession().setAttribute("ageOfUser", DB_Access.getInstance().getAgeOfUser(email));
                     request.getRequestDispatcher("homepage.jsp").forward(request,response);
+                    System.out.println();
                 } catch (SQLException throwables) {
                     System.out.println(throwables.toString());
                 }
             }
+            request.getRequestDispatcher("WelcomePage.jsp").forward(request, response);
         }
         /**
          * Registration
@@ -140,9 +142,7 @@ public class Controller extends HttpServlet {
             } catch (SQLException throwables) {
                 System.out.println(throwables.toString());
             }
-            request.setAttribute("bmi", value);
-            request.setAttribute("weight", weight);
-            request.setAttribute("height", height);
+            request.setAttribute("bmiValue", value);
             request.getRequestDispatcher("bmiAnzeigen.jsp").forward(request, response);
         }
     }
