@@ -12,7 +12,7 @@ public class BMICalc {
      */
     public static double getBMI(int height, double weight) {
         double value = 0;
-        value = weight/(Math.pow(height/100, 2));
+        value = weight/(Math.pow(height/100.0, 2));
         return value;
     }
 }
