@@ -136,6 +136,7 @@ public class Controller extends HttpServlet {
             double weight = Double.parseDouble(request.getParameter("weight"));
             int height = Integer.parseInt(request.getParameter("height"));
             double value = BMICalc.getBMI(height, weight);
+            System.out.println(weight + " -- " + height + " -- " + value);
             try {
                 DB_Access.getInstance().insertBMI(new bmi(LocalDate.now(), value, height, weight,
                         Integer.parseInt(JWT.decodeJWT(jwtUser).getId())));
