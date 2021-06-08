@@ -139,6 +139,7 @@ public class Controller extends HttpServlet {
             } catch (SQLException throwables) {
                 System.out.println(throwables.toString());
             }
+            request.setAttribute("bmi", value);
             request.setAttribute("weight", weight);
             request.setAttribute("height", height);
             request.getRequestDispatcher("bmiAnzeigen.jsp").forward(request, response);
