@@ -9,6 +9,7 @@
 
 <html>
 <link href="timelineDesign.css" rel="stylesheet">
+<script src="event.js" type="text/javascript"></script>
 <head>
     <title>Title</title>
 </head>
@@ -44,9 +45,51 @@
                     <div class="item-title">Lucas McAlister just send you a message.</div>
 
                 </li>
+                <li class="rb-item" ng-repeat="itembx">
+                    <div class="timestamp">
+                        17st June 2020<br> 7:00 PM
+                    </div>
+                    <div class="item-title">Lucas McAlister just send you a message.</div>
+
+                </li>
+                <li class="rb-item" ng-repeat="itembx">
+                    <div class="timestamp">
+                        17st June 2020<br> 7:00 PM
+                    </div>
+                    <div class="item-title">Lucas McAlister just send you a message.</div>
+
+                </li>
+                <li class="rb-item" ng-repeat="itembx">
+                    <div class="timestamp">
+                        17st June 2020<br> 7:00 PM
+                    </div>
+                    <div class="item-title">Lucas McAlister just send you a message.</div>
+
+                </li>
+                <li class="rb-item" ng-repeat="itembx">
+                    <div class="timestamp">
+                        17st June 2020<br> 7:00 PM
+                    </div>
+                    <div class="item-title">Lucas McAlister just send you a message.</div>
+
+                </li>
+                <li class="rb-item" ng-repeat="itembx">
+                    <div class="timestamp">
+                        17st June 2020<br> 7:00 PM
+                    </div>
+                    <div class="item-title">Lucas McAlister just send you a message.</div>
+
+                </li>
+                <li class="rb-item" ng-repeat="itembx">
+                    <div class="timestamp">
+                        17st June 2020<br> 7:00 PM
+                    </div>
+                    <div class="item-title">Lucas McAlister just send you a message.</div>
+
+                </li>
             </ul>
             <div class="" style="margin-top:5%">
-                <button name="btEvent" type="submit" class="icon-btn add-btn">
+                <button name="btEvent" type="submit" class="icon-btn add-btn" onclick="openFormLogin()" >
                     <div class="add-icon"></div>
                     <div class="btn-txt">Add</div>
                 </button>
@@ -54,16 +97,12 @@
         </div>
     </div>
 </div>
-<div class="form-popup" id="loginForm">
-    <form action="./Controller" class="form-container" method="post">
-        <h1>Login</h1>
-        <label><b>Date</b></label>
-        <input type="text" placeholder="Enter Email" name="date" required>
-        <label><b>Description</b></label>
-        <input type="text" placeholder="My birthday" name="description" required>
+<div class="form-popup" id="eventForm">
+        <a class="eventTitle">Add an event</a>
+        <label for="description" ><span class="descriptionLabel">Description</span></label>
+        <textarea id="description" placeholder="My birthday" name="description" class="description" required></textarea>
         <button type="submit" name="addTimeline" value="addTimeline" class="btn">Add to Timeline</button>
-        <button type="button" class="btn cancel" onclick="closeFormLogin()">cancel</button>
-    </form>
+        <button type="button" class="btn" onclick="closeFormLogin()">Cancel</button>
 </div>
 
 </body>
