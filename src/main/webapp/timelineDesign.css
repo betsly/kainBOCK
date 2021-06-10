@@ -1,26 +1,24 @@
 @import url("https://fonts.googleapis.com/css2?family=PT+Sans&display=swap");
 
 body {
-    background: #e8cbc0;
+    background: #000000;
+    overflow: hidden;
 }
 
 .container {
     background: #232931;
-    width: 540px;
-    height: 500px;
     margin: 0 auto;
     position: relative;
-    margin-top: 10%;
-    box-shadow: 2px 5px 20px rgba(119, 119, 119, 0.5);
+    margin-left: 5%;
+    /*box-shadow: 2px 5px 20px rgba(119, 119, 119, 0.5);*/
 }
 
 .leftbox {
-    top: -5%;
     left: 5%;
     position: absolute;
     width: 15%;
     height: 110%;
-    background-color: #50d890;
+    background-color: #78163C;
     box-shadow: 3px 3px 15px rgba(119, 119, 119, 0.5);
 }
 
@@ -40,14 +38,28 @@ nav a {
 .rightbox {
     padding: 0em 34rem 0em 0em;
     height: 100%;
+    background-color: #000000;
+}
+
+#timeVertikal {
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    padding-left: 35%;
+    font-size: 60px;
+    font-weight: bold;
+    letter-spacing: 60px;
+    text-transform: uppercase;
 }
 
 .rb-container {
     font-family: "PT Sans", sans-serif;
-    width: 50%;
-    margin: auto;
+    width: 100%;
+    margin-left: 40%;
     display: block;
     position: relative;
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 100%;
 }
 
 .rb-container ul.rb {
@@ -77,7 +89,7 @@ nav a {
     content: " ";
     border: 8px solid rgba(255, 255, 255, 1);
     border-radius: 500%;
-    background: #50d890;
+    background: #78163C;
     height: 20px;
     width: 20px;
     transition: all 500ms ease-in-out;
@@ -89,7 +101,7 @@ nav a {
 }
 
 ul.rb li .timestamp {
-    color: #50d890;
+    color: #e8357b;
     position: relative;
     width: 100px;
     font-size: 12px;
@@ -133,3 +145,90 @@ input::placeholder {
     padding: 5em 5em 1em 1em;
     color: #50d890;
 }
+
+.main-hr {
+    width: 30%;
+    border: none;
+    border-top: 1px solid #c3c3c3;
+}
+.icon-btn {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #cdcdcd;
+    background: white;
+    border-radius: 25px;
+    overflow: hidden;
+    position: relative;
+    transition: width 0.2s ease-in-out;
+}
+.add-btn:hover {
+    width: 120px;
+}
+.add-btn::before,
+.add-btn::after {
+    transition: width 0.2s ease-in-out, border-radius 0.2s ease-in-out;
+    content: "";
+    position: absolute;
+    height: 4px;
+    width: 10px;
+    top: calc(50% - 2px);
+    background: red;
+}
+.add-btn::after {
+    right: 14px;
+    overflow: hidden;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+.add-btn::before {
+    left: 14px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
+.icon-btn:focus {
+    outline: none;
+}
+.btn-txt {
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+.add-btn:hover::before,
+.add-btn:hover::after {
+    width: 4px;
+    border-radius: 2px;
+}
+.add-btn:hover .btn-txt {
+    opacity: 1;
+}
+.add-icon::after,
+.add-icon::before {
+    transition: all 0.2s ease-in-out;
+    content: "";
+    position: absolute;
+    height: 20px;
+    width: 2px;
+    top: calc(50% - 10px);
+    background: red;
+    overflow: hidden;
+}
+.add-icon::before {
+    left: 22px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
+.add-icon::after {
+    right: 22px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+.add-btn:hover .add-icon::before {
+    left: 15px;
+    height: 4px;
+    top: calc(50% - 2px);
+}
+.add-btn:hover .add-icon::after {
+    right: 15px;
+    height: 4px;
+    top: calc(50% - 2px);
+}
+
