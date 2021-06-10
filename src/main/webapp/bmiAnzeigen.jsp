@@ -19,7 +19,10 @@
 <p id="title">Dein BMI</p>
 
 <div class="bmidiv">
+    ${ageOfUser}
+    <span style="color: white">${bmiValue}</span>
     <c:choose>
+
         <c:when test="${ageOfUser >= 18 && ageOfUser <= 24}">
             <span class="age">18-24</span>
             <table id="tabele">
