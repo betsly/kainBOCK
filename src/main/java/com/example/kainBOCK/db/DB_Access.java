@@ -2,6 +2,7 @@ package com.example.kainBOCK.db;
 
 import com.example.kainBOCK.bl.BMICalc;
 import com.example.kainBOCK.pojo.Goal;
+import com.example.kainBOCK.pojo.TimeStamp;
 import com.example.kainBOCK.pojo.UserAccount;
 import com.example.kainBOCK.pojo.bmi;
 
@@ -23,6 +24,13 @@ public class DB_Access {
     private PreparedStatement insertUserPrStat = null;
     private final String insertUserString = "INSERT INTO user_account (name, password, email, gender_id, goal_id, date_of_birth) "
             + "VALUES ( ? , ? , ?, ?, ?, ?);";
+
+    private PreparedStatement createTimeStampPrStat = null;
+    private final String createTimeStampString = "INSERT INTO timestamp (user_id, description, date) "
+            + "VALUES ( ? , ? , ?);";
+
+    private PreparedStatement getPwByMailPrStat = null;
+    private final String getPwByMailString = "SELECT password FROM user_account WHERE email = ?;";
 
     /**
      * Returns the current Instance
@@ -104,9 +112,11 @@ public class DB_Access {
      */
     public int getPasswordByEmail(String email) throws SQLException {
         String password = "";
-        String sql = "SELECT password FROM user_account WHERE email = \'" + email + "\';";
-        Statement prep = db.getStatement();
-        ResultSet rs = prep.executeQuery(sql);
+        if (getPwByMailPrStat == null) {
+            getPwByMailPrStat = db.getConnection().prepareStatement(getPwByMailString);
+        }
+        getPwByMailPrStat.setString(1, email);
+        ResultSet rs = getPwByMailPrStat.executeQuery();
         while (rs.next()) {
             password = rs.getString("password");
         }
@@ -150,6 +160,12 @@ public class DB_Access {
         return userID;
     }
 
+    /**
+     *
+     * @param email
+     * @return
+     * @throws SQLException
+     */
     public int getAgeOfUser(String email) throws SQLException {
         LocalDate birthdate = null;
         String sql = "SELECT date_of_birth FROM user_account WHERE email = \'" + email + "\';";
@@ -159,5 +175,44 @@ public class DB_Access {
             birthdate = rs.getDate("date_of_birth").toLocalDate();
         }
         return birthdate == null ? -1 : Period.between(birthdate, LocalDate.now()).getYears();
+    }
+
+    /**
+     *
+     * @param userID
+     * @return
+     * @throws SQLException
+     */
+    public List<TimeStamp> getTimeStampsForUser(int userID) throws SQLException {
+        List<TimeStamp> timestamps = new ArrayList<>();
+        String sql = "SELECT * FROM timestamp WHERE user_id = " + userID + ";";
+        Statement prep = db.getStatement();
+        ResultSet rs = prep.executeQuery(sql);
+        while (rs.next()) {
+            int id = rs.getInt("id");
+            String description = rs.getString("description");
+            LocalDate date = rs.getDate("date").toLocalDate();
+            timestamps.add(new TimeStamp(id, description, date));
+        }
+        return timestamps;
+    }
+
+    /**
+     *
+     * @param userID
+     * @param description
+     * @param date
+     * @return
+     * @throws SQLException
+     */
+    public boolean createTimeStamp(int userID, String description, LocalDate date) throws SQLException {
+        if (createTimeStampPrStat == null) {
+            createTimeStampPrStat = db.getConnection().prepareStatement(createTimeStampString);
+        }
+        createTimeStampPrStat.setInt(1, userID);
+        createTimeStampPrStat.setDate(3, Date.valueOf(date));
+        createTimeStampPrStat.setString(2, description);
+        int numDataSets = createTimeStampPrStat.executeUpdate();
+        return numDataSets > 0;
     }
 }
