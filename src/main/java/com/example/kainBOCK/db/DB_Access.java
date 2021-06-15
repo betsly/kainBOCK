@@ -7,8 +7,7 @@ import com.example.kainBOCK.pojo.UserAccount;
 import com.example.kainBOCK.pojo.bmi;
 
 import java.sql.*;
-import java.time.LocalDate;
-import java.time.Period;
+import java.time.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -191,7 +190,7 @@ public class DB_Access {
         while (rs.next()) {
             int id = rs.getInt("id");
             String description = rs.getString("description");
-            LocalDate date = rs.getDate("date").toLocalDate();
+            LocalDateTime date = LocalDateTime.ofInstant(Instant.ofEpochMilli(rs.getDate("date").getTime()), ZoneOffset.UTC) ;
             timestamps.add(new TimeStamp(id, description, date));
         }
         return timestamps;
@@ -205,12 +204,12 @@ public class DB_Access {
      * @return
      * @throws SQLException
      */
-    public boolean createTimeStamp(int userID, String description, LocalDate date) throws SQLException {
+    public boolean createTimeStamp(int userID, String description, LocalDateTime date) throws SQLException {
         if (createTimeStampPrStat == null) {
             createTimeStampPrStat = db.getConnection().prepareStatement(createTimeStampString);
         }
         createTimeStampPrStat.setInt(1, userID);
-        createTimeStampPrStat.setDate(3, Date.valueOf(date));
+        createTimeStampPrStat.setDate(3, (Date) Date.from(date.toInstant(ZoneOffset.UTC)));
         createTimeStampPrStat.setString(2, description);
         int numDataSets = createTimeStampPrStat.executeUpdate();
         return numDataSets > 0;
