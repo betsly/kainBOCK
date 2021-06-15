@@ -152,7 +152,11 @@ public class Controller extends HttpServlet {
             request.getRequestDispatcher("WelcomePage.jsp").forward(request, response);
         }
         else if (request.getParameter("timeline") != null) {
-
+            try {
+                request.setAttribute("events",DB_Access.getInstance().getTimeStampsForUser(Integer.parseInt(JWT.decodeJWT(jwtUser).getId())));
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
             request.getRequestDispatcher("timeline.jsp").forward(request, response);
         }
     }

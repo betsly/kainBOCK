@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: jiazh
@@ -6,6 +7,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<jsp:useBean id="now" class="java.util.Date" />
 
 <html>
 <link href="timelineDesign.css" rel="stylesheet">
@@ -23,70 +26,15 @@
     <div class="rightbox">
         <div class="rb-container">
             <ul class="rb">
+                <c:forEach items="${events}" var="event">
                 <li class="rb-item" ng-repeat="itembx">
                     <div class="timestamp">
-                        3rd May 2020<br> 7:00 PM
+                        ${event.date}
+                        ${}
                     </div>
-                    <div class="item-title">Chris Serrano posted a photo on your wall.</div>
+                    <div class="item-title">${event.description}</div>
 
-                </li>
-                <li class="rb-item" ng-repeat="itembx">
-                    <div class="timestamp">
-                        19th May 2020<br> 3:00 PM
-                    </div>
-                    <div class="item-title">Mia Redwood commented on your last post.</div>
-
-                </li>
-
-                <li class="rb-item" ng-repeat="itembx">
-                    <div class="timestamp">
-                        17st June 2020<br> 7:00 PM
-                    </div>
-                    <div class="item-title">Lucas McAlister just send you a message.</div>
-
-                </li>
-                <li class="rb-item" ng-repeat="itembx">
-                    <div class="timestamp">
-                        17st June 2020<br> 7:00 PM
-                    </div>
-                    <div class="item-title">Lucas McAlister just send you a message.</div>
-
-                </li>
-                <li class="rb-item" ng-repeat="itembx">
-                    <div class="timestamp">
-                        17st June 2020<br> 7:00 PM
-                    </div>
-                    <div class="item-title">Lucas McAlister just send you a message.</div>
-
-                </li>
-                <li class="rb-item" ng-repeat="itembx">
-                    <div class="timestamp">
-                        17st June 2020<br> 7:00 PM
-                    </div>
-                    <div class="item-title">Lucas McAlister just send you a message.</div>
-
-                </li>
-                <li class="rb-item" ng-repeat="itembx">
-                    <div class="timestamp">
-                        17st June 2020<br> 7:00 PM
-                    </div>
-                    <div class="item-title">Lucas McAlister just send you a message.</div>
-
-                </li>
-                <li class="rb-item" ng-repeat="itembx">
-                    <div class="timestamp">
-                        17st June 2020<br> 7:00 PM
-                    </div>
-                    <div class="item-title">Lucas McAlister just send you a message.</div>
-
-                </li>
-                <li class="rb-item" ng-repeat="itembx">
-                    <div class="timestamp">
-                        17st June 2020<br> 7:00 PM
-                    </div>
-                    <div class="item-title">Lucas McAlister just send you a message.</div>
-
-                </li>
+                </li></c:forEach>
             </ul>
             <div class="" style="margin-top:5%">
                 <button name="btEvent" type="submit" class="icon-btn add-btn" onclick="openFormLogin()" >
