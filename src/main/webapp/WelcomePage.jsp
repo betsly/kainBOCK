@@ -40,7 +40,7 @@
         <h1>Registrieren</h1>
         <label><b>Geschlecht</b></label>
         <div id="gender">
-        <input type="radio" id="male" name="gender" value="male">
+        <input type="radio" id="male" name="gender" value="male" checked>
         <label>M</label>
         <input type="radio" id="female" name="gender" value="female">
         <label>W</label>

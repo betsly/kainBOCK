@@ -190,7 +190,7 @@ public class DB_Access {
         while (rs.next()) {
             int id = rs.getInt("id");
             String description = rs.getString("description");
-            LocalDateTime date = LocalDateTime.ofInstant(Instant.ofEpochMilli(rs.getDate("date").getTime()), ZoneOffset.UTC) ;
+            LocalDateTime date = LocalDateTime.ofInstant(Instant.ofEpochMilli(rs.getTimestamp("date").getTime()), ZoneOffset.UTC);
             timestamps.add(new TimeStamp(id, description, date));
         }
         return timestamps;
@@ -209,7 +209,7 @@ public class DB_Access {
             createTimeStampPrStat = db.getConnection().prepareStatement(createTimeStampString);
         }
         createTimeStampPrStat.setInt(1, userID);
-        createTimeStampPrStat.setDate(3, (Date) Date.from(date.toInstant(ZoneOffset.UTC)));
+        createTimeStampPrStat.setTimestamp(3, Timestamp.valueOf(date));
         createTimeStampPrStat.setString(2, description);
         int numDataSets = createTimeStampPrStat.executeUpdate();
         return numDataSets > 0;
