@@ -8,8 +8,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<jsp:useBean id="now" class="java.util.Date" />
-
+<jsp:useBean id="now" class="java.util.Date"/>
+<fmt:formatDate type="time" value="${now}"/><br/>
 <html>
 <link href="timelineDesign.css" rel="stylesheet">
 <script src="event.js" type="text/javascript"></script>
@@ -17,42 +17,52 @@
     <title>Title</title>
 </head>
 <form action="./Controller" method="POST">
-<body>
+    <body>
 
-<div class="container">
-    <div class="leftbox">
-        <span id="timeVertikal">Timeline</span>
-    </div>
-    <div class="rightbox">
-        <div class="rb-container">
-            <ul class="rb">
-                <c:forEach items="${events}" var="event">
-                <li class="rb-item" ng-repeat="itembx">
-                    <div class="timestamp">
-                        ${event.date}
-                        ${}
-                    </div>
-                    <div class="item-title">${event.description}</div>
+    <div class="container">
+        <div class="leftbox">
+            <span id="timeVertikal">Timeline</span>
+        </div>
+        <div class="rightbox">
+            <div class="rb-container">
+                <ul class="rb">
+                    <c:choose>
+                        <c:when test="${events == null || events.size() == 0}">
+                            <h2>Momentan sind keine Events vorhanden.</h2>
+                        </c:when>
+                        <c:otherwise>
+                            <c:forEach items="${events}" var="event">
+                                <li class="rb-item" ng-repeat="itembx">
+                                    <div class="timestamp">
+                                            ${event.getFormatDate()}
+                                            ${event.getFormatTime()}
+                                    </div>
+                                    <div class="item-title">${event.description}</div>
 
-                </li></c:forEach>
-            </ul>
-            <div class="" style="margin-top:5%">
-                <button name="btEvent" type="submit" class="icon-btn add-btn" onclick="openFormLogin()" >
-                    <div class="add-icon"></div>
-                    <div class="btn-txt">Add</div>
-                </button>
+                                </li>
+                            </c:forEach>
+                        </c:otherwise>
+                    </c:choose>
+
+
+                </ul>
+                <div class="" style="margin-top:5%">
+                    <button name="btEvent" type="submit" class="icon-btn add-btn" onclick="openFormLogin()">
+                        <div class="add-icon"></div>
+                        <div class="btn-txt">Add</div>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="form-popup" id="eventForm">
+    <div class="form-popup" id="eventForm">
         <a class="eventTitle">Add an event</a>
-        <label for="description" ><span class="descriptionLabel">Description</span></label>
+        <label for="description"><span class="descriptionLabel">Description</span></label>
         <textarea id="description" placeholder="My birthday" name="description" class="description" required></textarea>
         <button type="submit" name="addTimeline" value="addTimeline" class="btn">Add to Timeline</button>
         <button type="button" class="btn" onclick="closeFormLogin()">Cancel</button>
-</div>
+    </div>
 
-</body>
+    </body>
 </form>
 </html>
