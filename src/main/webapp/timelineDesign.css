@@ -160,7 +160,8 @@ input::placeholder {
     background: white;
     border-radius: 25px;
     overflow: hidden;
-    position: relative;
+    position: fixed;
+    bottom: 10px;
     transition: width 0.2s ease-in-out;
 }
 .add-btn:hover {

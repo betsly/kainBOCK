@@ -34,7 +34,7 @@
                             <c:forEach items="${events}" var="event">
                                 <li class="rb-item" ng-repeat="itembx">
                                     <div class="timestamp">
-                                            ${event.getFormatDate()}
+                                            ${event.getFormatDate()}<br>
                                             ${event.getFormatTime()}
                                     </div>
                                     <div class="item-title">${event.description}</div>
