@@ -5,6 +5,7 @@ import com.example.kainBOCK.bl.JWT;
 import com.example.kainBOCK.bl.SendMail;
 import com.example.kainBOCK.db.DB_Access;
 import com.example.kainBOCK.pojo.Goal;
+import com.example.kainBOCK.pojo.TimeStamp;
 import com.example.kainBOCK.pojo.UserAccount;
 import com.example.kainBOCK.pojo.bmi;
 
@@ -22,6 +23,7 @@ import java.util.List;
 public class Controller extends HttpServlet {
 
     private static final DateTimeFormatter DTF = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+    private List<TimeStamp> event = new ArrayList<>();
     private List<Goal> goals = new ArrayList<>();
     private String jwtUser = "";
 
@@ -147,9 +149,10 @@ public class Controller extends HttpServlet {
             request.getRequestDispatcher("bmiAnzeigen.jsp").forward(request, response);
         }
         else if(request.getParameter("logout") != null){
-            request.getRequestDispatcher("homepage.jsp").forward(request, response);
+            request.getRequestDispatcher("WelcomePage.jsp").forward(request, response);
         }
         else if (request.getParameter("timeline") != null) {
+
             request.getRequestDispatcher("timeline.jsp").forward(request, response);
         }
     }
