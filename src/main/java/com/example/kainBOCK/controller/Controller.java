@@ -146,5 +146,9 @@ public class Controller extends HttpServlet {
             request.setAttribute("bmiValue", value);
             request.getRequestDispatcher("bmiAnzeigen.jsp").forward(request, response);
         }
+
+        else if (request.getParameter("timeline") != null) {
+            request.getRequestDispatcher("timeline.jsp").forward(request, response);
+        }
     }
 }
