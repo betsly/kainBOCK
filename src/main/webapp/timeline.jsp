@@ -9,18 +9,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:useBean id="now" class="java.util.Date"/>
-<fmt:formatDate type="time" value="${now}"/><br/>
 <html>
 <link href="timelineDesign.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">-
 <script src="event.js" type="text/javascript"></script>
 <head>
     <title>Title</title>
 </head>
-<body>
-    <form action="./Controller" method="POST">
 
+<body>
+
+<form action="./Controller" method="POST">
         <div class="container">
             <div class="leftbox">
                 <span id="timeVertikal">Timeline</span>
@@ -64,7 +64,9 @@
             <button type="submit" name="addTimeline" class="btn">Add to Timeline</button>
             <button type="button" class="btn" onclick="closeFormLogin()">Cancel</button>
         </div>
-        <button type="submit" class="btHome" name="btHome"><i class="fa fa-home w3-xxlarge"></i></button>
-    </form>
+</form>
+<form action="./Controller" method="POST">
+    <button type="submit" class="btHomes" name="btHome"><i class="fa fa-home w3-xxlarge"></i></button>
+</form>
 </body>
 </html>

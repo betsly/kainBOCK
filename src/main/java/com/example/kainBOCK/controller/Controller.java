@@ -93,6 +93,10 @@ public class Controller extends HttpServlet {
             }
             request.getRequestDispatcher("WelcomePage.jsp").forward(request, response);
         }
+        else if (request.getParameter("btHome") != null) {
+            request.getRequestDispatcher("homepage.jsp").forward(request, response);
+        }
+
         /**
          * Registration
          */
@@ -171,9 +175,6 @@ public class Controller extends HttpServlet {
                 throwables.printStackTrace();
             }
          request.getRequestDispatcher("timeline.jsp").forward(request, response);
-        }
-        else if (request.getParameter("btHome") != null) {
-            request.getRequestDispatcher("homepage.jsp").forward(request, response);
         }
     }
 }

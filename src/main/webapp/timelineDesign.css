@@ -323,7 +323,7 @@ button:focus {
     outline: none;
 }
 
-.btHome {
+.btHomes {
     position: absolute;
     top: 8px;
     right: 16px;
@@ -332,11 +332,11 @@ button:focus {
     cursor: pointer;
 }
 
-.btHome i {
+.btHomes i {
     color: #78163C;
     transition: color 200ms ease-in-out;
 }
 
-.btHome i:hover {
+.btHomes i:hover {
     color: #89274D;
 }
