@@ -12,9 +12,10 @@
 <head>
     <title>BMI anzeigen</title>
     <link href="bmiAnzeigen.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body style="background-color: black">
-<form action="./Controller" method="post"></form>
+<form action="./Controller" method="post">
 
 <p id="title">Dein BMI</p>
 
@@ -163,18 +164,8 @@
 
         </c:when>
     </c:choose>
-
-
-
-
-
-
-
-
-
-
 </div>
-
-
+    <button class="btHome" name="btHome" type="submit"><i class="fa fa-home"></i></button>
+</form>
 </body>
 </html>

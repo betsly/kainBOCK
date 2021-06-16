@@ -15,6 +15,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -140,8 +141,9 @@ public class Controller extends HttpServlet {
             double value = BMICalc.getBMI(height, weight);
             System.out.println(weight + " -- " + height + " -- " + value);
             try {
-                DB_Access.getInstance().insertBMI(new bmi(LocalDate.now(), value, height, weight,
+                DB_Access.getInstance().insertBMI(new bmi(LocalDateTime.now(), value, height, weight,
                         Integer.parseInt(JWT.decodeJWT(jwtUser).getId())));
+                DB_Access.getInstance().createTimeStamp(Integer.parseInt(JWT.decodeJWT(jwtUser).getId()), String.format("Your BMI is %.2f", value), LocalDateTime.now());
             } catch (SQLException throwables) {
                 System.out.println(throwables.toString());
             }
@@ -158,6 +160,20 @@ public class Controller extends HttpServlet {
                 throwables.printStackTrace();
             }
             request.getRequestDispatcher("timeline.jsp").forward(request, response);
+        }
+
+        else if (request.getParameter("addTimeline") != null) {
+            String description = request.getParameter("description");
+            try {
+                DB_Access.getInstance().createTimeStamp(Integer.parseInt(JWT.decodeJWT(jwtUser).getId()), description, LocalDateTime.now());
+                request.setAttribute("events",DB_Access.getInstance().getTimeStampsForUser(Integer.parseInt(JWT.decodeJWT(jwtUser).getId())));
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+         request.getRequestDispatcher("timeline.jsp").forward(request, response);
+        }
+        else if (request.getParameter("btHome") != null) {
+            request.getRequestDispatcher("homepage.jsp").forward(request, response);
         }
     }
 }

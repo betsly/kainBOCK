@@ -71,7 +71,7 @@ public class DB_Access {
             insertBMIPrStat = db.getConnection().prepareStatement(insertBMIValues);
         }
 
-        insertBMIPrStat.setDate(1, Date.valueOf(BMI.getDate()));
+        insertBMIPrStat.setTimestamp(1, Timestamp.valueOf(BMI.getDate()));
         insertBMIPrStat.setInt(2, BMI.getUser_id());
         insertBMIPrStat.setDouble(3, BMI.getWeight());
         insertBMIPrStat.setInt(4, BMI.getHeight());
@@ -209,7 +209,7 @@ public class DB_Access {
             createTimeStampPrStat = db.getConnection().prepareStatement(createTimeStampString);
         }
         createTimeStampPrStat.setInt(1, userID);
-        createTimeStampPrStat.setTimestamp(3, Timestamp.valueOf(date));
+        createTimeStampPrStat.setTimestamp(3, Timestamp.valueOf(date.plusHours(2)));
         createTimeStampPrStat.setString(2, description);
         int numDataSets = createTimeStampPrStat.executeUpdate();
         return numDataSets > 0;
