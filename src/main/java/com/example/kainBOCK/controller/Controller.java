@@ -85,6 +85,7 @@ public class Controller extends HttpServlet {
                 try {
                     jwtUser = JWT.createJWT(DB_Access.getInstance().getUserIDByEmail(email), email, "login-success", 1000000000);
                     request.getSession().setAttribute("ageOfUser", DB_Access.getInstance().getAgeOfUser(email));
+                    request.getSession().setAttribute("videos", DB_Access.getInstance().getVideos(DB_Access.getInstance().getGoalIdForUser(Integer.parseInt(JWT.decodeJWT(jwtUser).getId()))));
                     request.getRequestDispatcher("homepage.jsp").forward(request,response);
                     System.out.println();
                 } catch (SQLException throwables) {
@@ -105,7 +106,7 @@ public class Controller extends HttpServlet {
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
-            request.getRequestDispatcher("homepage.jsp").forward(request, response);
+            request.getRequestDispatcher("timeline.jsp").forward(request, response);
         }
         /**
          * Registration
@@ -123,6 +124,7 @@ public class Controller extends HttpServlet {
                 //login the user after registration
                 jwtUser = JWT.createJWT(DB_Access.getInstance().getUserIDByEmail(email), email, "login-success", 1000000000);
                 request.setAttribute("username", username);
+                request.getSession().setAttribute("videos", DB_Access.getInstance().getVideos(goalID));
             } catch (SQLException ex) {
                 System.out.println(ex.toString());
             }
