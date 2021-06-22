@@ -96,7 +96,17 @@ public class Controller extends HttpServlet {
         else if (request.getParameter("btHome") != null) {
             request.getRequestDispatcher("homepage.jsp").forward(request, response);
         }
+        else if (request.getParameter("btDelete") != null) {
+            int id = Integer.parseInt(request.getParameter("btDelete"));
+            try {
+                DB_Access.getInstance().deleteTimeStamp(id);
+                request.setAttribute("events",DB_Access.getInstance().getTimeStampsForUser(Integer.parseInt(JWT.decodeJWT(jwtUser).getId())));
 
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+            request.getRequestDispatcher("homepage.jsp").forward(request, response);
+        }
         /**
          * Registration
          */
