@@ -1,6 +1,5 @@
 package com.example.kainBOCK.db;
 
-import com.example.kainBOCK.bl.BMICalc;
 import com.example.kainBOCK.pojo.Goal;
 import com.example.kainBOCK.pojo.TimeStamp;
 import com.example.kainBOCK.pojo.UserAccount;
@@ -30,6 +29,12 @@ public class DB_Access {
 
     private PreparedStatement getPwByMailPrStat = null;
     private final String getPwByMailString = "SELECT password FROM user_account WHERE email = ?;";
+
+    private PreparedStatement deleteTimeStampPrStat = null;
+    private final String deleteTimeStampString = "DELETE FROM public.\"timestamp\"" +
+            "WHERE id = ?;";
+
+    
 
     /**
      * Returns the current Instance
@@ -212,6 +217,15 @@ public class DB_Access {
         createTimeStampPrStat.setTimestamp(3, Timestamp.valueOf(date.plusHours(2)));
         createTimeStampPrStat.setString(2, description);
         int numDataSets = createTimeStampPrStat.executeUpdate();
+        return numDataSets > 0;
+    }
+
+    public boolean deleteTimeStamp(int id) throws SQLException {
+        if (deleteTimeStampPrStat == null) {
+            deleteTimeStampPrStat = db.getConnection().prepareStatement(deleteTimeStampString);
+        }
+        deleteTimeStampPrStat.setInt(1, id);
+        int numDataSets = deleteTimeStampPrStat.executeUpdate();
         return numDataSets > 0;
     }
 }
