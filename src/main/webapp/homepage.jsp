@@ -30,14 +30,6 @@
             <div class="motivation1" id="m4">
                 <span class="fast-flicker">Now-</span>is-<span class="flicker">your-</span>time
             </div>
-
-
-
-
-
-
-
-
             <div class="btDiv">
                 <div class="buttons"><input class="bt" type="submit" name="timeline" value="TimeLine"></div>
                 <div class="buttons"><input class="bt" type="submit" name="bmiButton" value="BMI berechnen"></div>
@@ -45,9 +37,6 @@
                 <div class="buttons"><input class="bt" type="submit" name="changeProfile" value="Profil ändern"></div>
                 <div class="buttons"><input class="bt" type="submit" name="logout" value="Logout"></div>
             </div>
-
-
-
         </form>
     </body>
 </html>
