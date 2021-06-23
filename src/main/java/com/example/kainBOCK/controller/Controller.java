@@ -97,6 +97,9 @@ public class Controller extends HttpServlet {
         else if (request.getParameter("btHome") != null) {
             request.getRequestDispatcher("homepage.jsp").forward(request, response);
         }
+        else if (request.getParameter("videoButton") != null) {
+            request.getRequestDispatcher("videos.jsp").forward(request, response);
+        }
         else if (request.getParameter("btDelete") != null) {
             int id = Integer.parseInt(request.getParameter("btDelete"));
             try {

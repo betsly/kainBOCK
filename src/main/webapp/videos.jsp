@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: zmugg
@@ -17,10 +18,25 @@
     <details>
         <summary class="summary">Zusammenfassung Punkt 1</summary>
         <video controls='true' height='200' loop='false' width='300'>
-            <source src='https://res.cloudinary.com/dprmpoqzc/video/upload/kainbock/JiazhouVideo_1_rbc4i7.mp4' type='video/mp4'>
+            <source src='https://res.cloudinary.com/dprmpoqzc/video/upload/kainbock/JiazhouVideo_1_rbc4i7.mp4'
+                    type='video/mp4'>
         </video>
     </details>
-
+    <details>
+        <summary class="summary">Zusammenfassung Punkt 1</summary>
+        <video controls='true' height='200' loop='false' width='300'>
+            <source src='https://res.cloudinary.com/dprmpoqzc/video/upload/kainbock/JiazhouVideo_1_rbc4i7.mp4'
+                    type='video/mp4'>
+        </video>
+    </details>
+    <c:forEach var="video" items="${videos}">
+        <details>
+            <summary class="summary">${video.name}</summary>
+            <video controls='true' height='200' loop='false' width='300'>
+                <source src='${video.link}' type='video/mp4'>
+            </video>
+        </details>
+    </c:forEach>
 
 
 </div>

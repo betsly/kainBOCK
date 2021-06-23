@@ -11,9 +11,23 @@
     color: white;
     transform: translate(-50%,-50%);
 }
-.summary{
 
+.auto::-webkit-scrollbar {
+    display: none;
 }
+
+.summary{
+    font-weight: bold;
+    font-size: 20px;
+    font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+.summary:hover {
+    background-color: #989898;
+}
+
 #title{
     position: absolute;
     top: 10%;
