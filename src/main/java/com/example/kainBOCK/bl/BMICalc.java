@@ -12,6 +12,8 @@ public class BMICalc {
      */
     public static double getBMI(int height, double weight) {
         double value = 0;
+        if(height == 0 || weight == 0)
+            throw new IllegalArgumentException("height or weight can't be 0");
         value = weight/(Math.pow(height/100.0, 2));
         return value;
     }

@@ -147,7 +147,7 @@ public class DB_Access {
     }
 
     /**
-     *
+     * Gets the UserID with the email
      *
      * @param email
      * @return
@@ -165,6 +165,7 @@ public class DB_Access {
     }
 
     /**
+     * returns the Age of an User
      *
      * @param email
      * @return
@@ -182,6 +183,7 @@ public class DB_Access {
     }
 
     /**
+     * returns a list of all timestamps for a UserID
      *
      * @param userID
      * @return
@@ -202,6 +204,7 @@ public class DB_Access {
     }
 
     /**
+     * Creates a Timsetamp in DB
      *
      * @param userID
      * @param description
@@ -220,6 +223,13 @@ public class DB_Access {
         return numDataSets > 0;
     }
 
+    /**
+     * Deletes a timestamp in DB
+     *
+     * @param id
+     * @return
+     * @throws SQLException
+     */
     public boolean deleteTimeStamp(int id) throws SQLException {
         if (deleteTimeStampPrStat == null) {
             deleteTimeStampPrStat = db.getConnection().prepareStatement(deleteTimeStampString);
@@ -229,6 +239,13 @@ public class DB_Access {
         return numDataSets > 0;
     }
 
+    /**
+     * returns a list of all videos with the specific goal of the User
+     *
+     * @param goalID
+     * @return
+     * @throws SQLException
+     */
     public List<Video> getVideos(int goalID) throws SQLException {
         List<Video> videos = new ArrayList<>();
         if (getVideoListPrStat == null) {
@@ -245,6 +262,13 @@ public class DB_Access {
         return videos;
     }
 
+    /**
+     * returns the ID of the selected goal
+     *
+     * @param userID
+     * @return
+     * @throws SQLException
+     */
     public int getGoalIdForUser(int userID) throws SQLException {
         int goalID = -1;
         if (getGoalForUserPrStat == null) {
