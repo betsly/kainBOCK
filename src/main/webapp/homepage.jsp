@@ -13,6 +13,7 @@
         <script src="kainBOCKJavaScript.js" type="text/javascript"></script>
     </head>
     <body style=" background-color: #000000">
+
         <form action="./Controller" method="post">
 
             <div class="sign">

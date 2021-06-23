@@ -84,6 +84,14 @@ body {
     0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
     animation: shine 2s forwards, flicker 3s infinite;
 }
+.leftbox {
+    left: 5%;
+    position: absolute;
+    width: 15%;
+    height: 110%;
+    background-color: #78163C;
+    box-shadow: 3px 3px 15px rgba(119, 119, 119, 0.5);
+}
 
 .motivation1 {
     position: absolute;

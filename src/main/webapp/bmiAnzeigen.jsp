@@ -20,21 +20,27 @@
 
 <p id="title">Dein BMI</p>
 
+
 <div class="bmidiv">
     ${ageOfUser}
-    <span style="color: white">${bmiValue}</span>
+
+    <span style="color: white">Dein BMI Wert: ${bmiValue}</span>
     <c:choose>
+
 
         <c:when test="${ageOfUser >= 18 && ageOfUser <= 24}">
             <span class="age">18-24</span>
             <table id="tabele">
                 <tr>
+                    <td class="frau">W</td>
+                    <c:when test="${<24}">
                     <td class="wert" style="background-color: #ba7c9f"><19</td>
                     <td class="wert" style="background-color: #ff65bd">19-24</td>
                     <td class="wert" style="background-color: #e54f7e">25-28</td>
                     <td class="wert" style="background-color: #AB2752">>28</td>
                 </tr>
                 <tr>
+                    <td class="frau">M</td>
                     <td class="text">Untergewicht</td>
                     <td class="text">Normalgewicht</td>
                     <td class="text">Übergewicht</td>
