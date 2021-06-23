@@ -1,10 +1,6 @@
 package com.example.kainBOCK.db;
 
-import com.example.kainBOCK.bl.BMICalc;
-import com.example.kainBOCK.pojo.Goal;
-import com.example.kainBOCK.pojo.TimeStamp;
-import com.example.kainBOCK.pojo.UserAccount;
-import com.example.kainBOCK.pojo.bmi;
+import com.example.kainBOCK.pojo.*;
 
 import java.sql.*;
 import java.time.*;
@@ -31,6 +27,15 @@ public class DB_Access {
     private PreparedStatement getPwByMailPrStat = null;
     private final String getPwByMailString = "SELECT password FROM user_account WHERE email = ?;";
 
+    private PreparedStatement deleteTimeStampPrStat = null;
+    private final String deleteTimeStampString = "DELETE FROM public.\"timestamp\"" +
+            "WHERE id = ?;";
+
+    private PreparedStatement getVideoListPrStat = null;
+    private final String getVideoListString = "SELECT * FROM video WHERE goal_id = ?";
+
+    private PreparedStatement getGoalForUserPrStat = null;
+    private final String getGoalForUserString = "SELECT goal_id FROM user_account WHERE user_id = ?";
     /**
      * Returns the current Instance
      *
@@ -213,5 +218,43 @@ public class DB_Access {
         createTimeStampPrStat.setString(2, description);
         int numDataSets = createTimeStampPrStat.executeUpdate();
         return numDataSets > 0;
+    }
+
+    public boolean deleteTimeStamp(int id) throws SQLException {
+        if (deleteTimeStampPrStat == null) {
+            deleteTimeStampPrStat = db.getConnection().prepareStatement(deleteTimeStampString);
+        }
+        deleteTimeStampPrStat.setInt(1, id);
+        int numDataSets = deleteTimeStampPrStat.executeUpdate();
+        return numDataSets > 0;
+    }
+
+    public List<Video> getVideos(int goalID) throws SQLException {
+        List<Video> videos = new ArrayList<>();
+        if (getVideoListPrStat == null) {
+            getVideoListPrStat = db.getConnection().prepareStatement(getVideoListString);
+        }
+        getVideoListPrStat.setInt(1, goalID);
+        ResultSet rs = getVideoListPrStat.executeQuery();
+        while (rs.next()) {
+            int id = rs.getInt("id");
+            String link = rs.getString("link");
+            String name = rs.getString("name");
+            videos.add(new Video(id, name, link));
+        }
+        return videos;
+    }
+
+    public int getGoalIdForUser(int userID) throws SQLException {
+        int goalID = -1;
+        if (getGoalForUserPrStat == null) {
+            getGoalForUserPrStat = db.getConnection().prepareStatement(getGoalForUserString);
+        }
+        getGoalForUserPrStat.setInt(1, userID);
+        ResultSet rs = getGoalForUserPrStat.executeQuery();
+        while (rs.next()) {
+            goalID = rs.getInt("goal_id");
+        }
+        return goalID;
     }
 }
