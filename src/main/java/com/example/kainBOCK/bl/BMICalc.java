@@ -5,6 +5,7 @@ import com.example.kainBOCK.pojo.bmi;
 public class BMICalc {
 
     /**
+     * claculates BMI value
      *
      * @param height
      * @param weight
