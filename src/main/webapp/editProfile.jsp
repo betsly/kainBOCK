@@ -20,13 +20,15 @@
     <button class="btHome" name="btHome" type="submit"><i class="fa fa-home w3-xxlarge"></i></button>
 </div>
     <div class="changePasswort">
+        <div class="innerdiv">
         <label><b>Altes Passwort</b></label>
         <div><input class="input" type="password" value="" placeholder="altes Password" name="oldPassword"></div>
         <label><b>Neues Passwort</b></label>
         <div><input class="input" type="password" value="" placeholder="neues Password" name="newPassword"></div>
-        <label><b>Neues Passwort bestätigigen</b></label>
+        <label><b>Neues Passwort bestätigen</b></label>
         <div><input class="input" type="password" value="" placeholder="neues Password" name="newPassword"></div>
         <div><input class="bt" type="submit" name="changePassword" value="Passwort ändern"></div>
+        </div>
     </div>
     <div class="changeGoal">
         <select name="goal" id="goals">

@@ -43,7 +43,7 @@
     margin: 5px 0 22px 0;
 }
 .bt{
-    background-color: #78163C ;
+    background-color: #78163C;
     color: black;
     padding: 16px 70px;
     text-align: center;
@@ -59,10 +59,10 @@
     width: 400px;
 
 }
-.input{
-    background-color: #4d4b4b;
+.input {
+    background-color: #bab6b6;
     color: black;
-    padding: 16px 70px;
+    padding: 14px 5px;
     border: black;
     text-decoration: none;
     display: inline-block;
@@ -74,11 +74,12 @@
     width: 350px;
 
 }
+.innerdiv{
+
+}
+
 label{
     color: #AB2752;
     font-size: 20px;
     font-family: "PT Sans", sans-serif;
-}
-b{
-    text-align: left;
 }
