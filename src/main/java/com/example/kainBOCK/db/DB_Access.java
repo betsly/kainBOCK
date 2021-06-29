@@ -359,11 +359,11 @@ public class DB_Access {
         getUserInformation.setInt(1, userID);
         ResultSet rs = getUserInformation.executeQuery();
         while (rs.next()) {
-            String username = rs.getString("u.name");
-            String email =  rs.getString("u.email");
-            String goal =  rs.getString("goal.name");
-            String gender =  rs.getString("ge.gender");
-            LocalDate dateOfBirth =  rs.getDate("u.date_of_birth").toLocalDate();
+            String username = rs.getString(1);
+            String email =  rs.getString("email");
+            String goal =  rs.getString("name");
+            String gender =  rs.getString(5);
+            LocalDate dateOfBirth =  rs.getDate("date_of_birth").toLocalDate();
             // String name, String email, String gender, String goal, LocalDate dateOfBirth
             user = new UserAccount(username, email, gender, goal, dateOfBirth);
         }
