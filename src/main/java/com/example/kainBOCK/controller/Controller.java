@@ -23,7 +23,7 @@ import java.util.List;
 @WebServlet(name = "Controller", value = "/Controller")
 public class Controller extends HttpServlet {
 
-    private static final DateTimeFormatter DTF = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+    private static final DateTimeFormatter DTF = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private List<TimeStamp> event = new ArrayList<>();
     private List<Goal> goals = new ArrayList<>();
     private String jwtUser = "";
@@ -180,7 +180,7 @@ public class Controller extends HttpServlet {
             } catch (SQLException throwables) {
                 System.out.println(throwables.toString());
             }
-            request.setAttribute("bmiValue", String.format("%2.2f", value));
+            request.setAttribute("bmiValue", Math.round(value * 100.0) / 100.0);
             request.getRequestDispatcher("bmiAnzeigen.jsp").forward(request, response);
         }
         /**
