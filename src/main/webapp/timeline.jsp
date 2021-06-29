@@ -50,7 +50,7 @@
 
                     </ul>
                     <div class="" style="margin-top:5%">
-                        <button name="btEvent" type="submit" class="icon-btn add-btn" onclick="openFormLogin()">
+                        <button type="button" name="btEvent" class="icon-btn add-btn" onclick="openFormLogin()">
                             <div class="add-icon"></div>
                             <div class="btn-txt">Add</div>
                         </button>
@@ -58,6 +58,8 @@
                 </div>
             </div>
         </div>
+</form>
+<form action="./Controller" method="POST">
         <div class="form-popup" id="eventForm">
             <a class="eventTitle">Add an event</a>
             <label for="description"><span class="descriptionLabel">Description</span></label>
@@ -69,5 +71,6 @@
 <form action="./Controller" method="POST">
     <button type="submit" class="btHomes" name="btHome"><i class="fa fa-home w3-xxlarge"></i></button>
 </form>
+
 </body>
 </html>
