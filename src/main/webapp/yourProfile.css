@@ -1,0 +1,51 @@
+i{
+    color: #78163C;
+
+
+}
+.icon{
+    width: 50%;
+    position: absolute;
+    top: 40%;
+    text-align: center;
+}
+.profile{
+    width: 50%;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    text-align: center;
+
+}
+.profileItems{
+
+    color: #AB2752;
+    font-size: 30px;
+    text-align: left;
+}
+.btHome {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.btHome i {
+    color: #000000;
+    transition: color 200ms ease-in-out;
+}
+
+.btHome i:hover {
+    color: #89274D;
+}
+.header {
+    padding: 2px;
+    text-align: center;
+    background: #78163C;
+    color:black;
+    font-family: "PT Sans", sans-serif;
+    font-size: 60px;
+    font-weight: bold;
+}

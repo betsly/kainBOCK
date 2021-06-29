@@ -19,6 +19,7 @@
             <div class="header">
                 <span>KainBOCK</span>
                 <input class="btn" type="submit" name="logout" value="Logout">
+                <input class="btn1" type="submit" name="showProfile" value="${username}">
             </div>
 
                 <p>

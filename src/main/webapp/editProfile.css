@@ -59,6 +59,15 @@
     width: 400px;
 
 }
+.select-wrapper {
+    width: 200px;
+}
+select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    border: none;
+}
 .input {
     background-color: #bab6b6;
     color: black;

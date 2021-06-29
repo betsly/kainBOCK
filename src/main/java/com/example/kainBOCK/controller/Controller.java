@@ -222,7 +222,7 @@ public class Controller extends HttpServlet {
          */
         else if (request.getParameter("changePassword") != null) {
             try {
-                String password = request.getParameter("pswLogin");
+                String password = request.getParameter("oldPassword");
                 String email = JWT.decodeJWT(jwtUser).getIssuer();
                 int pwCompare = -1;
                 // get password for input mail address
@@ -263,11 +263,13 @@ public class Controller extends HttpServlet {
         else if(request.getParameter("showProfile") != null){
             try {
                 request.setAttribute("user", DB_Access.getInstance().getUserInformation(Integer.parseInt(JWT.decodeJWT(jwtUser).getId())));
-                request.getRequestDispatcher("yourProfile.jsp").forward(request, response);
+
             } catch (SQLException throwables) {
                 System.out.println(throwables);
                 request.getRequestDispatcher("homepage.jsp").forward(request, response);
+
             }
+            request.getRequestDispatcher("yourProfile.jsp").forward(request, response);
         }
     }
 }
