@@ -13,6 +13,7 @@ import java.util.Properties;
 public class SendMail {
 
     /**
+     * Versendet die mail
      *
      * @param smtpHost
      * @param username
@@ -31,14 +32,11 @@ public class SendMail {
         properties.put("mail.smtp.host", smtpHost);
 
         // !!Wichtig!! Falls der SMTP-Server eine Authentifizierung
-        // verlangt
-        // muss an dieser Stelle die Property auf "true" gesetzt
-        // werden
+        // verlangt muss an dieser Stelle die Property auf "true" gesetzt werden
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.starttls.enable", "true");
-        // Hier wird mit den Properties und dem implements Contructor
-        // erzeugten
-        // MailAuthenticator eine Session erzeugt
+        // Hier wird mit den Properties und dem implements Constructor
+        // erzeugten MailAuthenticator eine Session erzeugt
         Session session = Session.getDefaultInstance(properties, auth);
 
         try {

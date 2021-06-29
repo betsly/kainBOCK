@@ -36,6 +36,16 @@ public class DB_Access {
 
     private PreparedStatement getGoalForUserPrStat = null;
     private final String getGoalForUserString = "SELECT goal_id FROM user_account WHERE user_id = ?";
+
+    private PreparedStatement changeGoal = null;
+    private final String changeGoalStr = "UPDATE public.user_account\n" +
+            "SET goal_id=?\n" +
+            "WHERE user_id = ?;";
+
+    private PreparedStatement changePasswordPrStat = null;
+    private final String changePasswordStr = "UPDATE public.user_account\n" +
+            "SET password = ?\n" +
+            "WHERE user_id = ?;";
     /**
      * Returns the current Instance
      *
@@ -86,7 +96,7 @@ public class DB_Access {
     }
 
     /**
-     * Registration of new user
+     * inserts User into DB after Registration
      *
      * @param user
      * @return
@@ -108,7 +118,7 @@ public class DB_Access {
     }
 
     /**
-     * Gets the password to check if input password for login is correct
+     * Returns the password to check if input password for login is correct
      *
      * @param email
      * @return
@@ -128,7 +138,7 @@ public class DB_Access {
     }
 
     /**
-     * Gets all goals from DB
+     * Returns a list of all goals available in the DB
      *
      * @return
      * @throws SQLException
@@ -147,7 +157,7 @@ public class DB_Access {
     }
 
     /**
-     * Gets the UserID with the email
+     * Returns the UserID with the email
      *
      * @param email
      * @return
@@ -165,7 +175,7 @@ public class DB_Access {
     }
 
     /**
-     * returns the Age of an User
+     * returns the Age (in years) of an User
      *
      * @param email
      * @return
@@ -280,5 +290,41 @@ public class DB_Access {
             goalID = rs.getInt("goal_id");
         }
         return goalID;
+    }
+
+    /**
+     * Update the Goal of a specific User in DB
+     *
+     * @param userID
+     * @param goalID
+     * @return
+     * @throws SQLException
+     */
+    public boolean changeGoal(int userID, int goalID) throws SQLException {
+        if (changeGoal == null) {
+            changeGoal = db.getConnection().prepareStatement(changeGoalStr);
+        }
+        changeGoal.setInt(1, goalID);
+        changeGoal.setInt(2,userID);
+        int numDataSets = changeGoal.executeUpdate();
+        return numDataSets > 0;
+    }
+
+    /**
+     * Update Password of Specific user in DB
+     *
+     * @param userID
+     * @param password
+     * @return
+     * @throws SQLException
+     */
+    public boolean changePassword(int userID, String password) throws SQLException {
+        if (changeGoal == null) {
+            changeGoal = db.getConnection().prepareStatement(changeGoalStr);
+        }
+        changeGoal.setInt(1, password.hashCode());
+        changeGoal.setInt(2,userID);
+        int numDataSets = changeGoal.executeUpdate();
+        return numDataSets > 0;
     }
 }
