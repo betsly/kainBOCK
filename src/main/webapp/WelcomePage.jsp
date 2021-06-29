@@ -18,7 +18,7 @@
 <div id="position">
 <p id="ü1">Willkommen bei <b>KainBOCK</b>!</p>
 <p id="info">Mit <b>KainBOCK</b> zur Traumfigur!</p>
-<p id="infoMehr">erfahre HIER mehr</p>
+
 
 <button class="button" name="login" onclick="openFormLogin()">LOGIN </button>
 <br>

@@ -4,7 +4,7 @@
     background-size: 100%;
 }
 .button{
-    background-color: #AB2752 ;
+    background-color: #AB2752;
     color: black;
     padding: 20px 90px;
     text-align: center;
@@ -18,7 +18,8 @@
     border-radius: 15px;
     width: 400px;
     position: relative;
-    top: 10%;
+    top: 30%;
+    font-family: "PT Sans", sans-serif;
 }
 .button:hover {
     background-color: #78163C;
@@ -33,6 +34,7 @@
 #ü1{
     color: #AB2752;
     font-size: 80px;
+    font-family: "PT Sans", sans-serif
 }
 #info{
     position: relative;
@@ -40,6 +42,7 @@
     color: white;
     text: bold;
     font-size: 32px;
+    font-family: "PT Sans", sans-serif
 }
 #infoMehr{
     position: relative;
@@ -47,6 +50,7 @@
     text-underline: white;
     color: white;
     font-size: 28px;
+    font-family: "PT Sans", sans-serif;
 }
 .form-popup {
     display: none;
