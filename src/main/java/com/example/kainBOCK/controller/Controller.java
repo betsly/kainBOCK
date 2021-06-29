@@ -214,11 +214,7 @@ public class Controller extends HttpServlet {
          request.getRequestDispatcher("timeline.jsp").forward(request, response);
         }
         else if(request.getParameter("changeProfile") != null){
-            try {
-                request.getSession().setAttribute("goals", goals.addAll(DB_Access.getInstance().getAllGoals()));
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
+
             request.getRequestDispatcher("editProfile.jsp").forward(request,response);
         }
     }
