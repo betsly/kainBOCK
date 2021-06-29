@@ -84,7 +84,6 @@ public class Controller extends HttpServlet {
                 // create JWT for current user
                 try {
                     jwtUser = JWT.createJWT(DB_Access.getInstance().getUserIDByEmail(email), email, "login-success", 1000000000);
-                    request.getSession().setAttribute("ageOfUser", DB_Access.getInstance().getAgeOfUser(email));
                     request.getRequestDispatcher("homepage.jsp").forward(request,response);
                     System.out.println();
                 } catch (SQLException throwables) {
@@ -172,14 +171,18 @@ public class Controller extends HttpServlet {
             double weight = Double.parseDouble(request.getParameter("weight"));
             int height = Integer.parseInt(request.getParameter("height"));
             double value = BMICalc.getBMI(height, weight);
+            int age = -1;
             System.out.println(weight + " -- " + height + " -- " + value);
             try {
                 DB_Access.getInstance().insertBMI(new bmi(LocalDateTime.now(), value, height, weight,
                         Integer.parseInt(JWT.decodeJWT(jwtUser).getId())));
                 DB_Access.getInstance().createTimeStamp(Integer.parseInt(JWT.decodeJWT(jwtUser).getId()), String.format("Your BMI is %.2f", value), LocalDateTime.now());
+                age = DB_Access.getInstance().getAgeOfUser(JWT.decodeJWT(jwtUser).getIssuer());
             } catch (SQLException throwables) {
                 System.out.println(throwables.toString());
             }
+            request.getSession().setAttribute("ageOfUser", age);
+            System.out.println("Age Of User: " +  age);
             request.setAttribute("bmiValue", Math.round(value * 100.0) / 100.0);
             request.getRequestDispatcher("bmiAnzeigen.jsp").forward(request, response);
         }
