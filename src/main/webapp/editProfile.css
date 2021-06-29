@@ -1,0 +1,84 @@
+.btHome {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.btHome i {
+    color: #000000;
+    transition: color 200ms ease-in-out;
+}
+
+.btHome i:hover {
+    color: #89274D;
+}
+.header {
+    padding: 2px;
+    text-align: center;
+    background: #78163C;
+    color:black;
+    font-family: "PT Sans", sans-serif;
+    font-size: 60px;
+    font-weight: bold;
+}
+.changePasswort{
+    width: 50%;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    color: white;
+    text-align: center;
+}
+.changeGoal{
+    width: 50%;
+    top: 40%;
+    position: absolute;
+    color: white;
+    text-align: center;
+}
+#goals{
+    margin: 5px 0 22px 0;
+}
+.bt{
+    background-color: #78163C ;
+    color: black;
+    padding: 16px 70px;
+    text-align: center;
+    border: black;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    font-family: "PT Sans", sans-serif;
+    margin: 10px 10px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 25px;
+    width: 400px;
+
+}
+.input{
+    background-color: #4d4b4b;
+    color: black;
+    padding: 16px 70px;
+    border: black;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    font-family: "PT Sans", sans-serif;
+    margin: 10px 10px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    width: 350px;
+
+}
+label{
+    color: #AB2752;
+    font-size: 20px;
+    font-family: "PT Sans", sans-serif;
+}
+b{
+    text-align: left;
+}

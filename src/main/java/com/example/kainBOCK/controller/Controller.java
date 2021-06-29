@@ -213,5 +213,8 @@ public class Controller extends HttpServlet {
             }
          request.getRequestDispatcher("timeline.jsp").forward(request, response);
         }
+        else if(request.getParameter("changeProfile") != null){
+            request.getRequestDispatcher("editProfile.jsp").forward(request,response);
+        }
     }
 }
