@@ -22,11 +22,11 @@
     </div>
     <div class="changePasswort">
         <div class="innerdiv">
-            <label><b>Altes Passwort</b></label>
+
             <div><input class="input" type="password" value="" placeholder="altes Password" name="oldPassword"></div>
-            <label><b>Neues Passwort</b></label>
+
             <div><input class="input" type="password" value="" placeholder="neues Password" name="newPassword"></div>
-            <label><b>Neues Passwort bestätigen</b></label>
+
             <div><input class="input" type="password" value="" placeholder="neues Password" name="newPassword"></div>
             <div><input class="bt" type="submit" name="changePassword" value="Passwort ändern"></div>
             <label>${errorChangePW}</label>
@@ -38,7 +38,7 @@
                 <option value="${goal.goalID}">${goal.name}</option>
             </c:forEach>
         </select>
-        <div><input class="bt" type="submit" name="changeGoal" value="Goal ändern"></div>
+        <div><input class="bt" type="submit" name="changeGoal" value="Ziel ändern"></div>
 
     </div>
 </form>
