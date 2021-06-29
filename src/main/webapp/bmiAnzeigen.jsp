@@ -15,44 +15,51 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 </head>
-<body style="background-color: black">
-<form action="./Controller" method="post">
-
-<p id="title">Dein BMI</p>
+<body style="background-color: black" id="body">
 
 
+<form action="./Controller" method="post" id="bmiForm">
+    <div class="header">
+        <p>Dein BMI</p>
+        <button class="btHome" name="btHome" type="submit"><i class="fa fa-home w3-xxlarge"></i></button>
+    </div>
 <div class="bmidiv">
-    ${ageOfUser}
 
-    <span style="color: white">Dein BMI Wert: ${bmiValue}</span>
+    <div class="deineWerte">
+        <span class="bmiWert"><strong>Dein BMI Wert: </strong>${bmiValue}</span>
+        <span class="bmiWert"><strong>Dein Alter: </strong>${ageOfUser} Jahre</span>
+    </div>
+
     <c:choose>
 
 
         <c:when test="${ageOfUser >= 18 && ageOfUser <= 24}">
-            <span class="age">18-24</span>
-            <table id="tabele">
-                <tr>
-                    <td class="frau">W</td>
-                    <c:when test="${<24}">
-                    <td class="wert" style="background-color: #ba7c9f"><19</td>
-                    <td class="wert" style="background-color: #ff65bd">19-24</td>
-                    <td class="wert" style="background-color: #e54f7e">25-28</td>
-                    <td class="wert" style="background-color: #AB2752">>28</td>
-                </tr>
-                <tr>
-                    <td class="frau">M</td>
-                    <td class="text">Untergewicht</td>
-                    <td class="text">Normalgewicht</td>
-                    <td class="text">Übergewicht</td>
-                    <td class="text">Adipositas</td>
-                </tr>
-                <tr>
-                    <td class="wert" style="background-color: #ba7c9f"><20</td>
-                    <td class="wert" style="background-color: #ff65bd">20-25</td>
-                    <td class="wert" style="background-color: #e54f7e">26-29</td>
-                    <td class="wert" style="background-color: #AB2752">>29</td>
-                </tr>
-            </table>
+            <div class="tabllenDiv">
+                <span class="age">18-24 Jahre</span>
+                <table id="tabele">
+                    <tr>
+                        <td class="gender">W</td>
+                        <td class="${bmiValue <19 ? "selected" : "wert"}" style="background-color: #ba7c9f" ><19</td>
+                        <td class="${bmiValue >=19 && bmiValue <=24 ? "selected" : "wert"}" style="background-color: #ff65bd" >19-24</td>
+                        <td class="${bmiValue >=25 && bmiValue <=28 ? "selected" : "wert"}" style="background-color: #e54f7e">25-28</td>
+                        <td class="${bmiValue >=28 ? "selected" : "wert"}" style="background-color: #AB2752">>28</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="text">Untergewicht</td>
+                        <td class="text">Normalgewicht</td>
+                        <td class="text">Übergewicht</td>
+                        <td class="text">Adipositas</td>
+                    </tr>
+                    <tr>
+                        <td class="gender">M</td>
+                        <td class="${bmiValue < 20 ? "selected" : "wert"}" style="background-color: #ba7c9f"><20</td>
+                        <td class="${bmiValue >=20 && bmiValue <=25 ? "selected" : "wert"}" style="background-color: #ff65bd">20-25</td>
+                        <td class="${bmiValue >=26 && bmiValue <=29 ? "selected" : "wert"}" style="background-color: #e54f7e">26-29</td>
+                        <td class="${bmiValue >=29 ? "selected" : "wert"}" style="background-color: #AB2752">>29</td>
+                    </tr>
+                </table>
+            </div>
         </c:when>
         <c:when test="${ageOfUser >= 25 && ageOfUser <= 34}">
             <span class="age">25-34</span>
@@ -168,11 +175,11 @@
                     <td class="wert" style="background-color: #AB2752">>29</td>
                 </tr>
             </table>
-
         </c:when>
     </c:choose>
 </div>
-    <button class="btHome" name="btHome" type="submit"><i class="fa fa-home w3-xxlarge"></i></button>
+
 </form>
+
 </body>
 </html>
