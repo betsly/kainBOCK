@@ -319,12 +319,12 @@ public class DB_Access {
      * @throws SQLException
      */
     public boolean changePassword(int userID, String password) throws SQLException {
-        if (changeGoal == null) {
-            changeGoal = db.getConnection().prepareStatement(changeGoalStr);
+        if (changePasswordPrStat == null) {
+            changePasswordPrStat = db.getConnection().prepareStatement(changePasswordStr);
         }
-        changeGoal.setInt(1, password.hashCode());
-        changeGoal.setInt(2,userID);
-        int numDataSets = changeGoal.executeUpdate();
+        changePasswordPrStat.setInt(1, password.hashCode());
+        changePasswordPrStat.setInt(2,userID);
+        int numDataSets = changePasswordPrStat.executeUpdate();
         return numDataSets > 0;
     }
 }
