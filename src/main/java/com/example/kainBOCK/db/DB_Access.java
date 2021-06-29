@@ -46,6 +46,16 @@ public class DB_Access {
     private final String changePasswordStr = "UPDATE public.user_account\n" +
             "SET password = ?\n" +
             "WHERE user_id = ?;";
+
+    private PreparedStatement getUsername = null;
+    private final String getUsernameStr = "SELECT name FROM public.user_account WHERE user_id = ?";
+
+    private PreparedStatement getUserInformation = null;
+    private final String getUserInformationStr = "SELECT u.name, u.email, u.date_of_birth, ge.gender, goal.name \n" +
+            "FROM public.user_account u INNER JOIN gender ge ON u.gender_id = ge.id \n" +
+            "                           INNER JOIN goal ON u.goal_id = goal.goal_id \n" +
+            "WHERE u.user_id = ?;";
+
     /**
      * Returns the current Instance
      *
@@ -326,5 +336,37 @@ public class DB_Access {
         changePasswordPrStat.setInt(2,userID);
         int numDataSets = changePasswordPrStat.executeUpdate();
         return numDataSets > 0;
+    }
+
+    public String getUsername(int userID) throws SQLException {
+        String username="";
+        if (getUsername == null) {
+            getUsername = db.getConnection().prepareStatement(getUsernameStr);
+        }
+        getUsername.setInt(1, userID);
+        ResultSet rs = getUsername.executeQuery();
+        while (rs.next()) {
+            username = rs.getString("name");
+        }
+        return username;
+    }
+
+    public UserAccount getUserInformation(int userID) throws SQLException {
+        UserAccount user = null;
+        if (getUserInformation == null) {
+            getUserInformation = db.getConnection().prepareStatement(getUserInformationStr);
+        }
+        getUserInformation.setInt(1, userID);
+        ResultSet rs = getUserInformation.executeQuery();
+        while (rs.next()) {
+            String username = rs.getString("u.name");
+            String email =  rs.getString("u.email");
+            String goal =  rs.getString("goal.name");
+            String gender =  rs.getString("ge.gender");
+            LocalDate dateOfBirth =  rs.getDate("u.date_of_birth").toLocalDate();
+            // String name, String email, String gender, String goal, LocalDate dateOfBirth
+            user = new UserAccount(username, email, gender, goal, dateOfBirth);
+        }
+        return user;
     }
 }

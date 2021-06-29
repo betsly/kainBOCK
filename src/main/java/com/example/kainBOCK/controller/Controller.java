@@ -81,8 +81,8 @@ public class Controller extends HttpServlet {
                 // create JWT for current user
                 try {
                     jwtUser = JWT.createJWT(DB_Access.getInstance().getUserIDByEmail(email), email, "login-success", 1000000000);
+                    request.getSession().setAttribute("username", DB_Access.getInstance().getUsername(Integer.parseInt(JWT.decodeJWT(jwtUser).getId())));
                     request.getRequestDispatcher("homepage.jsp").forward(request, response);
-                    System.out.println();
                 } catch (SQLException throwables) {
                     System.out.println(throwables.toString());
                 }
@@ -137,7 +137,7 @@ public class Controller extends HttpServlet {
                 DB_Access.getInstance().insertUser(new UserAccount(username, email, password, genderID, goalID, LocalDate.parse(dateOfBirth, DTF)));
                 //login the user after registration
                 jwtUser = JWT.createJWT(DB_Access.getInstance().getUserIDByEmail(email), email, "login-success", 1000000000);
-                request.setAttribute("username", username);
+                request.getSession().setAttribute("username", username);
             } catch (SQLException ex) {
                 System.out.println(ex.toString());
             }
@@ -244,6 +244,9 @@ public class Controller extends HttpServlet {
                 request.getRequestDispatcher("editProfile.jsp");
             }
         }
+        /**
+         * change Goal in DB
+         */
         else if (request.getParameter("changeGoal") != null){
             try {
                 // changeGoal(userID, goalID)
@@ -253,6 +256,15 @@ public class Controller extends HttpServlet {
                 System.out.println(throwables.toString());
             }
             request.getRequestDispatcher("homepage.jsp").forward(request, response);
+        }
+        else if(request.getParameter("showProfile") != null){
+            try {
+                request.setAttribute("user", DB_Access.getInstance().getUserInformation(Integer.parseInt(JWT.decodeJWT(jwtUser).getId())));
+                request.getRequestDispatcher("yourProfile.jsp").forward(request, response);
+            } catch (SQLException throwables) {
+                System.out.println(throwables);
+                request.getRequestDispatcher("homepage.jsp").forward(request, response);
+            }
         }
     }
 }
