@@ -29,7 +29,6 @@ public class Controller extends HttpServlet {
     private String jwtUser = "";
 
     /**
-     *
      * @param config
      * @throws ServletException
      */
@@ -46,7 +45,6 @@ public class Controller extends HttpServlet {
     }
 
     /**
-     *
      * @param request
      * @param response
      * @throws ServletException
@@ -58,7 +56,6 @@ public class Controller extends HttpServlet {
     }
 
     /**
-     *
      * @param request
      * @param response
      * @throws ServletException
@@ -69,7 +66,7 @@ public class Controller extends HttpServlet {
         /**
          * Login
          */
-        if(request.getParameter("confirmLogin") != null) {
+        if (request.getParameter("confirmLogin") != null) {
             String password = request.getParameter("pswLogin");
             String email = request.getParameter("emailLogin");
             int pwCompare = -1;
@@ -84,7 +81,7 @@ public class Controller extends HttpServlet {
                 // create JWT for current user
                 try {
                     jwtUser = JWT.createJWT(DB_Access.getInstance().getUserIDByEmail(email), email, "login-success", 1000000000);
-                    request.getRequestDispatcher("homepage.jsp").forward(request,response);
+                    request.getRequestDispatcher("homepage.jsp").forward(request, response);
                     System.out.println();
                 } catch (SQLException throwables) {
                     System.out.println(throwables.toString());
@@ -119,7 +116,7 @@ public class Controller extends HttpServlet {
                 // Delete TimeStamp in DB
                 DB_Access.getInstance().deleteTimeStamp(id);
                 // Get new events List
-                request.setAttribute("events",DB_Access.getInstance().getTimeStampsForUser(Integer.parseInt(JWT.decodeJWT(jwtUser).getId())));
+                request.setAttribute("events", DB_Access.getInstance().getTimeStampsForUser(Integer.parseInt(JWT.decodeJWT(jwtUser).getId())));
             } catch (SQLException throwables) {
                 System.out.println(throwables.toString());
             }
@@ -128,7 +125,7 @@ public class Controller extends HttpServlet {
         /**
          * Registration
          */
-        else if(request.getParameter("confirmRegistration") != null) {
+        else if (request.getParameter("confirmRegistration") != null) {
             String username = request.getParameter("name");
             String password = request.getParameter("psw");
             String email = request.getParameter("email");
@@ -147,7 +144,7 @@ public class Controller extends HttpServlet {
             // send Confirmationmail
             String usernameMail = "kainbock.pos@gmail.com";
             String passwordMail = "kainbock.pos123";
-            String senderAddress ="kainbock.pos@gmail.com";//someone@web.de
+            String senderAddress = "kainbock.pos@gmail.com";//someone@web.de
             String recipientsAddress = email; //somereceiver@web.de
             String subject = "Bestätigung der Anmeldung";
             String text = "Ihre Anmeldung bei KainBOCK wurde hiermit bestätigt.";
@@ -156,18 +153,18 @@ public class Controller extends HttpServlet {
 
             new SendMail().sendMail(smtpHost, usernameMail, passwordMail, senderAddress, recipientsAddress, subject, text);
 
-            request.getRequestDispatcher("homepage.jsp").forward(request,response);
+            request.getRequestDispatcher("homepage.jsp").forward(request, response);
         }
         /**
          * forward to BMI page
          */
-        else if(request.getParameter("bmiButton") != null) {
+        else if (request.getParameter("bmiButton") != null) {
             request.getRequestDispatcher("bmi.jsp").forward(request, response);
         }
         /**
          * Calculate BMI and save values to DB
          */
-        else if (request.getParameter("calcBMI") != null){
+        else if (request.getParameter("calcBMI") != null) {
             double weight = Double.parseDouble(request.getParameter("weight"));
             int height = Integer.parseInt(request.getParameter("height"));
             double value = BMICalc.getBMI(height, weight);
@@ -182,19 +179,18 @@ public class Controller extends HttpServlet {
                 System.out.println(throwables.toString());
             }
             request.getSession().setAttribute("ageOfUser", age);
-            System.out.println("Age Of User: " +  age);
+            System.out.println("Age Of User: " + age);
             request.setAttribute("bmiValue", Math.round(value * 100.0) / 100.0);
             request.getRequestDispatcher("bmiAnzeigen.jsp").forward(request, response);
         }
         /**
          * Logout
          */
-        else if(request.getParameter("logout") != null){
+        else if (request.getParameter("logout") != null) {
             request.getRequestDispatcher("WelcomePage.jsp").forward(request, response);
-        }
-        else if (request.getParameter("timeline") != null) {
+        } else if (request.getParameter("timeline") != null) {
             try {
-                request.setAttribute("events",DB_Access.getInstance().getTimeStampsForUser(Integer.parseInt(JWT.decodeJWT(jwtUser).getId())));
+                request.setAttribute("events", DB_Access.getInstance().getTimeStampsForUser(Integer.parseInt(JWT.decodeJWT(jwtUser).getId())));
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
@@ -207,15 +203,56 @@ public class Controller extends HttpServlet {
             String description = request.getParameter("description");
             try {
                 DB_Access.getInstance().createTimeStamp(Integer.parseInt(JWT.decodeJWT(jwtUser).getId()), description, LocalDateTime.now());
-                request.setAttribute("events",DB_Access.getInstance().getTimeStampsForUser(Integer.parseInt(JWT.decodeJWT(jwtUser).getId())));
+                request.setAttribute("events", DB_Access.getInstance().getTimeStampsForUser(Integer.parseInt(JWT.decodeJWT(jwtUser).getId())));
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
-         request.getRequestDispatcher("timeline.jsp").forward(request, response);
+            request.getRequestDispatcher("timeline.jsp").forward(request, response);
         }
-        else if(request.getParameter("changeProfile") != null){
-
-            request.getRequestDispatcher("editProfile.jsp").forward(request,response);
+        /**
+         * forward to the editProfile jsp
+         */
+        else if (request.getParameter("changeProfile") != null) {
+            request.getRequestDispatcher("editProfile.jsp").forward(request, response);
+        }
+        /**
+         * check if password is correct
+         * ---- if it is correct change password to new one
+         * ---- else return error and go back to editProfile JSP
+         */
+        else if (request.getParameter("changePassword") != null) {
+            try {
+                String password = request.getParameter("pswLogin");
+                String email = JWT.decodeJWT(jwtUser).getIssuer();
+                int pwCompare = -1;
+                // get password for input mail address
+                pwCompare = DB_Access.getInstance().getPasswordByEmail(email);
+                // compare password of DB with the input
+                if (pwCompare != -1 && password.hashCode() == pwCompare) {
+                    DB_Access.getInstance().changePassword(Integer.parseInt(JWT.decodeJWT(jwtUser).getId()),
+                            request.getParameter("newPassword"));
+                    request.getRequestDispatcher("homepage.jsp").forward(request, response);
+                }
+                // wrong input
+                else {
+                    request.setAttribute("errorChangePW", "Das eingegebene Passwort ist falsch ...");
+                    request.getRequestDispatcher("editProfile.jsp");
+                }
+            } catch (SQLException throwables) {
+                System.out.println(throwables.toString());
+                request.setAttribute("errorChangePW", "Fehler in der Datenbank: " + throwables.toString());
+                request.getRequestDispatcher("editProfile.jsp");
+            }
+        }
+        else if (request.getParameter("changeGoal") != null){
+            try {
+                // changeGoal(userID, goalID)
+                DB_Access.getInstance().changeGoal(Integer.parseInt(JWT.decodeJWT(jwtUser).getId()),
+                        Integer.parseInt(request.getParameter("goal")));
+            } catch (SQLException throwables) {
+                System.out.println(throwables.toString());
+            }
+            request.getRequestDispatcher("homepage.jsp").forward(request, response);
         }
     }
 }

@@ -9,26 +9,27 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>EditProfie</title>
+    <title>EditProfile</title>
     <link href="editProfile.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 </head>
 <body style="background-color: black">
 <form action="./Controller" method="post">
-<div class="header">
-    <p>Profil ändern</p>
-    <button class="btHome" name="btHome" type="submit"><i class="fa fa-home w3-xxlarge"></i></button>
-</div>
+    <div class="header">
+        <p>Profil ändern</p>
+        <button class="btHome" name="btHome" type="submit"><i class="fa fa-home w3-xxlarge"></i></button>
+    </div>
     <div class="changePasswort">
         <div class="innerdiv">
-        <label><b>Altes Passwort</b></label>
-        <div><input class="input" type="password" value="" placeholder="altes Password" name="oldPassword"></div>
-        <label><b>Neues Passwort</b></label>
-        <div><input class="input" type="password" value="" placeholder="neues Password" name="newPassword"></div>
-        <label><b>Neues Passwort bestätigen</b></label>
-        <div><input class="input" type="password" value="" placeholder="neues Password" name="newPassword"></div>
-        <div><input class="bt" type="submit" name="changePassword" value="Passwort ändern"></div>
+            <label><b>Altes Passwort</b></label>
+            <div><input class="input" type="password" value="" placeholder="altes Password" name="oldPassword"></div>
+            <label><b>Neues Passwort</b></label>
+            <div><input class="input" type="password" value="" placeholder="neues Password" name="newPassword"></div>
+            <label><b>Neues Passwort bestätigen</b></label>
+            <div><input class="input" type="password" value="" placeholder="neues Password" name="newPassword"></div>
+            <div><input class="bt" type="submit" name="changePassword" value="Passwort ändern"></div>
+            <label>${errorChangePW}</label>
         </div>
     </div>
     <div class="changeGoal">
