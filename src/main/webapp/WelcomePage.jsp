@@ -48,8 +48,8 @@
         <br>
         <label><b>Name</b></label>
         <input type="text" placeholder="Enter Name" name="name" required>
-        <label><b>Alter</b></label>
-        <input type="text" placeholder="10.04.2000" name="age" required>
+        <label><b>Alter</b></label><br>
+        <input type="date" placeholder="10.04.2000" name="age" required><br>
         <label><b>Email</b></label>
         <input type="text" placeholder="Enter Email" name="email" required>
         <label><b>Password</b></label>

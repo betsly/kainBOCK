@@ -180,7 +180,7 @@ public class Controller extends HttpServlet {
             } catch (SQLException throwables) {
                 System.out.println(throwables.toString());
             }
-            request.setAttribute("bmiValue", value);
+            request.setAttribute("bmiValue", String.format("%2.2f", value));
             request.getRequestDispatcher("bmiAnzeigen.jsp").forward(request, response);
         }
         /**
