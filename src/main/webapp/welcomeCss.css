@@ -73,7 +73,7 @@
     max-width: 300px;
     padding: 10px;
 }
-.form-container input[type=text], .form-container input[type=password]{
+.form-container input[type=text], .form-container input[type=password], .form-container input[type=date]{
     width: 100%;
     padding: 15px;
     margin: 5px 0 22px 0;
@@ -81,7 +81,7 @@
     background: lightgray;
     color: #AB2752;
 }
-.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+.form-container input[type=text]:focus, .form-container input[type=password]:focus, .form-container input[type=date]:focus{
     background-color: #ddd;
     outline: none;
 }

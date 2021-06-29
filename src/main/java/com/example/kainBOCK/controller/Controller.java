@@ -138,6 +138,7 @@ public class Controller extends HttpServlet {
                 //login the user after registration
                 jwtUser = JWT.createJWT(DB_Access.getInstance().getUserIDByEmail(email), email, "login-success", 1000000000);
                 request.getSession().setAttribute("username", username);
+                DB_Access.getInstance().createTimeStamp(Integer.parseInt(JWT.decodeJWT(jwtUser).getId()), "Wilkommen bei KainBOCK", LocalDateTime.now());
             } catch (SQLException ex) {
                 System.out.println(ex.toString());
             }
@@ -184,9 +185,10 @@ public class Controller extends HttpServlet {
             request.getRequestDispatcher("bmiAnzeigen.jsp").forward(request, response);
         }
         /**
-         * Logout
+         * Logout (delete jwtUser String and go back to WelcomePage)
          */
         else if (request.getParameter("logout") != null) {
+            jwtUser = "";
             request.getRequestDispatcher("WelcomePage.jsp").forward(request, response);
         } else if (request.getParameter("timeline") != null) {
             try {
@@ -263,11 +265,9 @@ public class Controller extends HttpServlet {
         else if(request.getParameter("showProfile") != null){
             try {
                 request.setAttribute("user", DB_Access.getInstance().getUserInformation(Integer.parseInt(JWT.decodeJWT(jwtUser).getId())));
-
             } catch (SQLException throwables) {
                 System.out.println(throwables);
                 request.getRequestDispatcher("homepage.jsp").forward(request, response);
-
             }
             request.getRequestDispatcher("yourProfile.jsp").forward(request, response);
         }
