@@ -257,6 +257,9 @@ public class Controller extends HttpServlet {
             }
             request.getRequestDispatcher("homepage.jsp").forward(request, response);
         }
+        /**
+         * forward to show profile
+         */
         else if(request.getParameter("showProfile") != null){
             try {
                 request.setAttribute("user", DB_Access.getInstance().getUserInformation(Integer.parseInt(JWT.decodeJWT(jwtUser).getId())));
