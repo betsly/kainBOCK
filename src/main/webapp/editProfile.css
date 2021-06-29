@@ -61,13 +61,43 @@
 }
 .select-wrapper {
     width: 200px;
+    position: relative;
 }
 select {
     -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
     border: none;
+    width: 350px;
+    height: 40px;
+    -moz-padding-start: calc(10px - 3px);
+    padding-left: 10px;
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.3);
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+    background-color: #bab6b6;
 }
+select option {
+    color: #666;
+}
+select:focus::-ms-value {
+    background-color: transparent;
+}
+.select-wrapper::before {
+    font-family: fontello;
+    content: "\f107";
+    font-size: 20px;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    color: #fff;
+    pointer-events: none;
+}
+
 .input {
     background-color: #bab6b6;
     color: black;
