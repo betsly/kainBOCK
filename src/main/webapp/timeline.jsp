@@ -34,7 +34,7 @@
                             <c:otherwise>
                                 <c:forEach items="${events}" var="event">
                                     <form action="./Controller" method="POST">
-                                        <button type="submit" class="btDelete" name="btDelete" value="${event.id}"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                        <button type="submit" class="btDelete" name="btDelete" value="${event.id}"><i class="fa fa-trash" aria-hidden="false"></i></button>
                                     </form>
                                     <li class="rb-item" ng-repeat="itembx">
                                         <div class="timestamp">

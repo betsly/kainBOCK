@@ -56,7 +56,7 @@
     color: black;
 }
 
-input[type=text] {
+input[type=number] {
     background-color: #000000;
     border: none;
     border-bottom: 2px solid white;
@@ -65,7 +65,7 @@ input[type=text] {
 
 }
 
-input[type=text]:focus {
+input[type=number]:focus {
     outline: none;
 }
 
