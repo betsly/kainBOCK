@@ -238,12 +238,12 @@ public class Controller extends HttpServlet {
                 // wrong input
                 else {
                     request.setAttribute("errorChangePW", "Das eingegebene Passwort ist falsch ...");
-                    request.getRequestDispatcher("editProfile.jsp");
+                    request.getRequestDispatcher("editProfile.jsp").forward(request, response);
                 }
             } catch (SQLException throwables) {
                 System.out.println(throwables.toString());
                 request.setAttribute("errorChangePW", "Fehler in der Datenbank: " + throwables.toString());
-                request.getRequestDispatcher("editProfile.jsp");
+                request.getRequestDispatcher("editProfile.jsp").forward(request, response);
             }
         }
         /**

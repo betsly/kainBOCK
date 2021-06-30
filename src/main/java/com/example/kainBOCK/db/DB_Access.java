@@ -361,8 +361,8 @@ public class DB_Access {
         while (rs.next()) {
             String username = rs.getString(1);
             String email =  rs.getString("email");
-            String goal =  rs.getString("name");
-            String gender =  rs.getString(5);
+            String goal =  rs.getString(5);
+            String gender =  rs.getString("gender");
             LocalDate dateOfBirth =  rs.getDate("date_of_birth").toLocalDate();
             // String name, String email, String gender, String goal, LocalDate dateOfBirth
             user = new UserAccount(username, email, gender, goal, dateOfBirth);
