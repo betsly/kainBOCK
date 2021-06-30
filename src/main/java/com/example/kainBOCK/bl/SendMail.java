@@ -10,6 +10,12 @@ import javax.mail.internet.MimeMessage;
 import java.util.Date;
 import java.util.Properties;
 
+/**
+ * @author nico
+ * @since 28.05.2021
+ *
+ * Mail Klasse
+ */
 public class SendMail {
 
     /**

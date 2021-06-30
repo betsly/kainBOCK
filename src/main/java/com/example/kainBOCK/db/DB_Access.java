@@ -7,6 +7,13 @@ import java.time.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * @author nico
+ * @since 24.04.2021
+ *
+ * Access Klasse
+ */
 public class DB_Access {
 
     private static DB_Access theInstance = null;

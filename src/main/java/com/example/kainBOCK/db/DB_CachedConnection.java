@@ -6,6 +6,11 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.Queue;
 
+
+/**
+ * @author nico
+ * @since 24.04.2021
+ */
 public class DB_CachedConnection {
     private Queue<Statement> statementQueue = new LinkedList<>();                   // Queue: a, b, c
     private Connection connection;

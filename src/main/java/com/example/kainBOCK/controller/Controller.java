@@ -20,6 +20,12 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * @author nico
+ * @since 23.03.2021
+ *
+ */
 @WebServlet(name = "Controller", value = "/Controller")
 public class Controller extends HttpServlet {
 

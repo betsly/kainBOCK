@@ -2,6 +2,13 @@ package com.example.kainBOCK.bl;
 
 import com.example.kainBOCK.pojo.bmi;
 
+/**
+ * @author jiazhou
+ * @since 23.03.2021
+ *
+ * Klasse um BMI zu berechnen
+ *
+ */
 public class BMICalc {
 
     /**

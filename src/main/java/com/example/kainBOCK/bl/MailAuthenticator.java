@@ -3,6 +3,12 @@ package com.example.kainBOCK.bl;
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 
+/**
+ * @author nico
+ * @since 28.05.2021
+ *
+ * Mail Klasse
+ */
 public class MailAuthenticator extends Authenticator {
     /**
      * Ein String, der den Usernamen nach der Erzeugung eines

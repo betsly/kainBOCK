@@ -5,6 +5,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * @author nico
+ * @since 24.04.2021
+ */
+
 public class DB_Database {
     private String db_url = "jdbc:postgresql://ec2-54-220-53-223.eu-west-1.compute.amazonaws.com:5432/dbn3qsqsrdh9am";
     private String db_driver = "org.postgresql.Driver";
